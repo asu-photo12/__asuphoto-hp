@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お客様の声｜葉月フォトグラファー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ffffff;
+    --mist:#f2efe8;
+    --ink:#1c1c1a;
+    --teal:#2f5349;
+    --teal-deep:#213c34;
+    --stone:#8d897d;
+    --line:rgba(28,28,26,0.1);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--paper); color:var(--ink); font-family:'Zen Kaku Gothic New', sans-serif;
+    font-weight:400; line-height:1.9; -webkit-font-smoothing:antialiased;
+    opacity:0; transition:opacity .3s ease;
+  }
+  body.ready{opacity:1;}
+  .en{font-family:'Poppins', sans-serif;}
+  .mincho{font-family:'Shippori Mincho', serif;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1000px; margin:0 auto; padding:0 40px;}
+
+  header{
+    display:flex; align-items:center; padding:20px 40px; border-bottom:1px solid var(--line);
+  }
+  .logo{display:flex; align-items:center; gap:12px;}
+  .logo svg{width:30px; height:30px; flex-shrink:0;}
+  .logo .en{font-size:11px; letter-spacing:0.1em; color:var(--stone); display:block;}
+  .logo .name{font-size:18px; font-weight:600;}
+
+  main{padding:56px 0 100px;}
+  .back-link{
+    display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:var(--stone);
+    margin-bottom:30px;
+  }
+  .back-link:hover{color:var(--ink);}
+
+  .eyebrow{font-family:'Poppins',sans-serif; font-weight:600; font-size:13px; letter-spacing:0.1em; color:var(--teal); margin-bottom:14px;}
+  .page-title{font-size:clamp(26px,4vw,36px); font-weight:700; margin-bottom:44px;}
+
+  .voices{display:grid; grid-template-columns:repeat(3,1fr); gap:32px 28px;}
+  .voice{border-top:2px solid var(--ink); padding-top:20px;}
+  .voice p{font-size:14px; color:#4b473d; margin-bottom:16px;}
+  .voice .who{font-family:'Poppins',sans-serif; font-size:12.5px; font-weight:600; color:var(--stone);}
+
+  .cta-row{margin-top:56px;}
+  .pill-btn{
+    display:inline-flex; align-items:center; gap:10px; background:var(--teal); color:#fff; font-weight:600;
+    font-size:14px; padding:15px 30px; border-radius:100px;
+  }
+  .pill-btn:hover{background:var(--teal-deep);}
+  .pill-btn .arrow{width:22px; height:22px; border-radius:50%; background:rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; font-size:12px;}
+
+  .empty-state{padding:60px 0; color:var(--stone); font-size:14px;}
+
+  @media (max-width:800px){
+    .voices{grid-template-columns:1fr 1fr; gap:26px 20px;}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 22px;}
+    header{padding:16px 22px;}
+    .voices{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="./index.html" class="logo">
+    <svg viewBox="0 0 40 40" fill="none"><rect x="4" y="12" width="32" height="22" rx="3" stroke="#1c1c1a" stroke-width="1.6"/><circle cx="20" cy="23" r="7" stroke="#1c1c1a" stroke-width="1.6"/><rect x="13" y="8" width="8" height="5" rx="1" stroke="#1c1c1a" stroke-width="1.6"/></svg>
+    <span>
+      <span class="en" id="logoLabel">Photographer</span>
+      <span class="name en" id="logoName">Hazuki</span>
+    </span>
+  </a>
+</header>
+
+<main>
+  <div class="wrap">
+    <a href="./index.html#voices" class="back-link">← ホームへ戻る</a>
+    <div class="eyebrow" id="voicesEyebrow">VOICE</div>
+    <h1 class="page-title" id="voicesTitle">お客様の声</h1>
+    <div class="voices" id="voicesGrid"></div>
+    <div class="cta-row">
+      <a href="./index.html#contact" class="pill-btn">お問い合わせ<span class="arrow">→</span></a>
+    </div>
+  </div>
+</main>
+
+<script src="./data.js"></script>
+<script>
+async function render() {
+  try {
+    const c = await loadContent();
+    document.getElementById('logoLabel').textContent = c.brand.logoLabel;
+    document.getElementById('logoName').textContent = c.brand.nameEn;
+    document.getElementById('voicesEyebrow').textContent = c.sections.voices.eyebrow;
+    document.getElementById('voicesTitle').textContent = c.sections.voices.title;
+
+    const gridEl = document.getElementById('voicesGrid');
+    if (!c.voices || c.voices.length === 0) {
+      gridEl.outerHTML = '<div class="empty-state">まだお客様の声がありません。</div>';
+    } else {
+      gridEl.innerHTML = c.voices.map(v => `
+        <div class="voice">
+          <p>${escapeHtml(v.text)}</p>
+          <div class="who en">${escapeHtml(v.who)}</div>
+        </div>`).join('');
+    }
+  } catch (e) {
+    console.error(e);
+  } finally {
+    document.body.classList.add('ready');
+  }
+}
+
+function escapeHtml(str) {
+  if (str === undefined || str === null) return '';
+  return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+
+render();
+</script>
+
+</body>
+</html>
