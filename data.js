@@ -5,23 +5,23 @@
    ここにあるオブジェクトは「まだ一度も保存されていないときの初期値」です。
    ============================================================ */
 
-const STORAGE_KEY = "site-content";
+var STORAGE_KEY = "site-content";
 
-const DEFAULT_CONTENT = {
+var DEFAULT_CONTENT = {
   brand: {
-    nameEn: "Hazuki",
-    nameJa: "葉月",
+    nameEn: "Eri",
+    nameJa: "えり",
     logoLabel: "Photographer"
   },
   hero: {
-    photo: "https://picsum.photos/seed/hazuki-hero-warm/1800/1000",
-    headline: "特別な日だけじゃない、いつもの幸せを。",
+    photo: "https://picsum.photos/seed/eri-hero-warm/1800/1000",
+    headline: "特別な日だけじゃない、\nいつもの幸せを。",
     sub: "何年経っても色褪せない思い出を形に。"
   },
   profile: {
-    photo: "https://picsum.photos/seed/hazuki-profile-casual/700/860",
-    nameEn: "Hazuki",
-    role: "フォトグラファー　葉月",
+    photo: "https://picsum.photos/seed/eri-profile-casual/700/860",
+    nameEn: "Eri",
+    role: "フォトグラファー　えり",
     body1: "埼玉県出身の出張撮影カメラマン。結婚式の前撮り、家族写真の撮影をメインに活動しています。休みの日はもっぱら喫茶店めぐり。",
     body2: "作られた表情よりも、生まれる表情を。緊張をほどく雑談から撮影は始まります。"
   },
@@ -104,7 +104,7 @@ const DEFAULT_CONTENT = {
     {
       key: "uchiphoto",
       label: "お家フォト",
-      labelEn: "Uchi Photo",
+      labelEn: "Oie Photo",
       photo: "https://picsum.photos/seed/plan-uchiphoto-cover/700/500",
       intro: "<b>2歳まで</b>のお子様がいるご家庭で、お家で遊んだり、抱っこしたり、絵本を読んだり。そんな何気ない未来に残したい写真を撮るお手伝いをさせてください。",
       notes: ["撮影場所はお家のみ・お家周辺となります", "ご兄弟の追加料金はなし", "ナチュラルニューボーン、マタニティも含みます"],
@@ -177,12 +177,12 @@ const DEFAULT_CONTENT = {
   contact: {
     heading: "まずは、お気軽にご相談ください",
     body: "撮影のイメージが固まっていなくても大丈夫です。日程やご予算など、なんでもお聞かせください。",
-    email: "hello@hazuki-photo.example.jp",
-    instagram: "@hazuki.photo",
+    email: "hello@eri-photo.example.jp",
+    instagram: "@eri.photo",
     tel: "090-0000-0000"
   },
   footer: {
-    copyright: "© 2026 Hazuki Photography"
+    copyright: "© 2026 Eri Photography"
   }
 };
 
