@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>管理サイト｜葉月フォトグラファー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#faf9f6;
+    --panel:#ffffff;
+    --ink:#1c1c1a;
+    --teal:#2f5349;
+    --teal-deep:#213c34;
+    --stone:#8d897d;
+    --line:#e6e3da;
+    --danger:#b8503e;
+    --warn:#c98a2c;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--paper); color:var(--ink); font-family:'Zen Kaku Gothic New',sans-serif;
+    line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  .en{font-family:'Poppins',sans-serif;}
+  a{color:inherit;}
+  ::selection{background:var(--teal); color:#fff;}
+
+  /* layout */
+  .shell{display:grid; grid-template-columns:240px 1fr; min-height:100vh;}
+  aside{
+    background:var(--ink); color:#fff; padding:28px 0; position:sticky; top:0; height:100vh; overflow-y:auto;
+  }
+  .side-logo{padding:0 24px 24px; border-bottom:1px solid rgba(255,255,255,0.12); margin-bottom:16px;}
+  .side-logo .en{font-size:12px; letter-spacing:0.1em; opacity:0.6; display:block; margin-bottom:2px;}
+  .side-logo b{font-size:16px; font-weight:700;}
+  .side-nav a{
+    display:flex; align-items:center; gap:10px; padding:12px 24px; font-size:14px; font-weight:500;
+    color:rgba(255,255,255,0.7); border-left:3px solid transparent; cursor:pointer;
+  }
+  .side-nav a:hover{color:#fff; background:rgba(255,255,255,0.05);}
+  .side-nav a.active{color:#fff; border-left-color:var(--teal); background:rgba(255,255,255,0.06); font-weight:700;}
+  .side-foot{padding:20px 24px; margin-top:16px; border-top:1px solid rgba(255,255,255,0.12);}
+  .view-site-btn{
+    display:flex; align-items:center; justify-content:center; gap:8px; background:var(--teal); color:#fff;
+    padding:11px; border-radius:8px; font-size:13px; font-weight:600; text-decoration:none;
+  }
+  .view-site-btn:hover{background:#3a6455;}
+
+  main{padding:36px 44px 100px;}
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between; margin-bottom:32px; gap:20px; flex-wrap:wrap;
+  }
+  .topbar h1{font-size:22px; font-weight:700;}
+  .topbar p{font-size:13px; color:var(--stone); margin-top:4px; max-width:640px;}
+  .save-area{display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
+  .export-banner{
+    background:#eef4f1; border:1px solid rgba(47,83,73,0.25); border-radius:10px; padding:16px 20px; margin-bottom:24px;
+  }
+  .export-banner p{font-size:13px; color:var(--teal-deep); line-height:1.8;}
+  .export-banner code{background:rgba(47,83,73,0.1); padding:2px 6px; border-radius:4px; font-family:'Poppins',sans-serif;}
+  .status-msg{font-size:13px; font-weight:600; opacity:0; transition:opacity .3s ease;}
+  .status-msg.show{opacity:1;}
+  .status-msg.ok{color:var(--teal);}
+  .status-msg.err{color:var(--danger);}
+  .btn{
+    border:none; border-radius:8px; padding:12px 22px; font-size:13.5px; font-weight:700; cursor:pointer;
+    font-family:'Zen Kaku Gothic New',sans-serif;
+  }
+  .btn-primary{background:var(--teal); color:#fff;}
+  .btn-primary:hover{background:var(--teal-deep);}
+  .btn-primary:disabled{opacity:0.5; cursor:default;}
+  .btn-ghost{background:transparent; color:var(--stone); border:1px solid var(--line);}
+  .btn-ghost:hover{border-color:var(--stone); color:var(--ink);}
+  .btn-danger{background:transparent; color:var(--danger); border:1px solid rgba(184,80,62,0.4); font-size:12.5px; padding:9px 16px;}
+  .btn-danger:hover{background:rgba(184,80,62,0.08);}
+  .btn-small{padding:8px 14px; font-size:12.5px;}
+
+  .panel{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:28px 30px; margin-bottom:22px;
+  }
+  .panel h2{font-size:16px; font-weight:700; margin-bottom:4px;}
+  .panel .hint{font-size:12.5px; color:var(--stone); margin-bottom:20px;}
+  .view{display:none;}
+  .view.active{display:block;}
+
+  .field{margin-bottom:18px;}
+  .field label{display:block; font-size:12.5px; font-weight:700; color:var(--stone); margin-bottom:7px;}
+  .field input[type=text], .field input[type=email], .field input[type=url], .field textarea{
+    width:100%; border:1px solid var(--line); border-radius:8px; padding:11px 13px; font-size:14px;
+    font-family:'Zen Kaku Gothic New',sans-serif; color:var(--ink); background:#fff;
+  }
+  .field input:focus, .field textarea:focus{outline:none; border-color:var(--teal);}
+  .field textarea{resize:vertical; min-height:70px;}
+  .field .subhint{font-size:11.5px; color:var(--stone); margin-top:5px;}
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  .grid-3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px;}
+
+  .img-preview{width:100%; max-width:220px; aspect-ratio:4/3; object-fit:cover; border-radius:8px; border:1px solid var(--line); margin-top:8px; background:var(--paper);}
+
+  .repeat-item{border:1px solid var(--line); border-radius:10px; padding:20px; margin-bottom:14px; position:relative; background:#fff;}
+  .repeat-item .item-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;}
+  .item-num{font-size:12px; font-weight:700; color:var(--stone); font-family:'Poppins',sans-serif;}
+  .add-btn{
+    display:inline-flex; align-items:center; gap:6px; background:var(--paper); border:1.5px dashed var(--line);
+    color:var(--teal-deep); font-weight:700; font-size:13px; padding:12px 18px; border-radius:10px; cursor:pointer;
+    width:100%; justify-content:center; font-family:'Zen Kaku Gothic New',sans-serif;
+  }
+  .add-btn:hover{border-color:var(--teal); background:#eef4f1;}
+
+  .toggle-row{display:flex; align-items:center; gap:10px; margin-bottom:16px;}
+  .toggle-row label{font-size:13px; font-weight:600; color:var(--ink);}
+  .switch{position:relative; width:40px; height:22px; flex-shrink:0;}
+  .switch input{opacity:0; width:0; height:0;}
+  .slider{position:absolute; inset:0; background:var(--line); border-radius:100px; cursor:pointer; transition:.2s;}
+  .slider::before{content:""; position:absolute; width:16px; height:16px; left:3px; top:3px; background:#fff; border-radius:50%; transition:.2s;}
+  .switch input:checked + .slider{background:var(--teal);}
+  .switch input:checked + .slider::before{transform:translateX(18px);}
+
+  .cat-tabs{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:22px; border-bottom:1px solid var(--line); padding-bottom:16px;}
+  .cat-tab-btn{
+    padding:9px 16px; border-radius:100px; border:1px solid var(--line); background:#fff; font-size:13px;
+    font-weight:600; cursor:pointer; font-family:'Zen Kaku Gothic New',sans-serif; color:var(--stone);
+  }
+  .cat-tab-btn.active{background:var(--ink); color:#fff; border-color:var(--ink);}
+
+  .loading-screen{
+    position:fixed; inset:0; background:var(--paper); display:flex; align-items:center; justify-content:center;
+    font-size:14px; color:var(--stone); z-index:999;
+  }
+
+  @media (max-width:900px){
+    .shell{grid-template-columns:1fr;}
+    aside{position:relative; height:auto;}
+    main{padding:28px 20px 80px;}
+    .grid-2, .grid-3{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="loading-screen" id="loadingScreen">読み込み中…</div>
+
+<div class="shell" id="shell" style="display:none;">
+  <aside>
+    <div class="side-logo">
+      <span class="en">ADMIN</span>
+      <b>ホームページ管理</b>
+    </div>
+    <nav class="side-nav" id="sideNav">
+      <a data-view="brand" class="active">サイト基本情報</a>
+      <a data-view="hero">ヒーロー</a>
+      <a data-view="profile">プロフィール</a>
+      <a data-view="plans">撮影プラン・料金</a>
+      <a data-view="gallery">ギャラリー</a>
+      <a data-view="voices">お客様の声</a>
+      <a data-view="faq">よくある質問</a>
+      <a data-view="terms">ご利用規約</a>
+      <a data-view="contact">お問い合わせ</a>
+    </nav>
+    <div class="side-foot">
+      <a class="view-site-btn" href="./index.html" target="_blank">サイトを表示 ↗</a>
+    </div>
+  </aside>
+
+  <main>
+    <div class="topbar">
+      <div>
+        <h1 id="pageTitle">サイト基本情報</h1>
+        <p>変更したら「保存する」を押してください。公開中のサイトに反映するには「data.jsを書き出す」からファイルをダウンロードし、公開先サーバーのdata.jsと差し替えてください。</p>
+      </div>
+      <div class="save-area">
+        <span class="status-msg" id="statusMsg"></span>
+        <button class="btn btn-ghost" id="resetBtn">初期状態に戻す</button>
+        <button class="btn btn-ghost" id="exportBtn">data.jsを書き出す</button>
+        <button class="btn btn-primary" id="saveBtn">保存する</button>
+      </div>
+    </div>
+
+    <div class="export-banner" id="exportBanner" style="display:none;">
+      <p>
+        <strong>data.js を書き出しました。</strong>
+        ダウンロードされたファイルを、公開しているサーバー上の <code>data.js</code> と置き換えてください。
+        置き換え後、ホームページを再読み込みすると内容が反映されます。
+      </p>
+    </div>
+
+    <!-- ============ 基本情報 ============ -->
+    <div class="view active" id="view-brand">
+      <div class="panel">
+        <h2>サイト基本情報</h2>
+        <p class="hint">ヘッダーのロゴ部分に表示される名前です。</p>
+        <div class="grid-2">
+          <div class="field">
+            <label>ロゴ上の小さいラベル（英語）</label>
+            <input type="text" id="brand-logoLabel">
+          </div>
+          <div class="field">
+            <label>お名前（英語表記）</label>
+            <input type="text" id="brand-nameEn">
+          </div>
+        </div>
+        <div class="field">
+          <label>お名前（日本語）</label>
+          <input type="text" id="brand-nameJa">
+        </div>
+      </div>
+      <div class="panel">
+        <h2>フッター</h2>
+        <div class="field">
+          <label>コピーライト表記</label>
+          <input type="text" id="footer-copyright">
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ ヒーロー ============ -->
+    <div class="view" id="view-hero">
+      <div class="panel">
+        <h2>ヒーローセクション（トップの大きな写真とキャッチコピー）</h2>
+        <div class="field">
+          <label>写真URL</label>
+          <input type="url" id="hero-photo" oninput="updatePreview('hero-photo','hero-photo-preview')">
+          <img class="img-preview" id="hero-photo-preview">
+        </div>
+        <div class="field">
+          <label>見出し（Enterキーで改行できます）</label>
+          <textarea id="hero-headline"></textarea>
+        </div>
+        <div class="field">
+          <label>サブコピー（Enterキーで改行できます）</label>
+          <textarea id="hero-sub"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ プロフィール ============ -->
+    <div class="view" id="view-profile">
+      <div class="panel">
+        <h2>プロフィールセクション</h2>
+        <div class="field">
+          <label>見出しラベル（写真の左上に表示される小さな文字）</label>
+          <input type="text" id="profile-eyebrow">
+        </div>
+        <div class="field">
+          <label>写真URL</label>
+          <input type="url" id="profile-photo" oninput="updatePreview('profile-photo','profile-photo-preview')">
+          <img class="img-preview" id="profile-photo-preview">
+        </div>
+        <div class="grid-2">
+          <div class="field">
+            <label>お名前（英語表記）</label>
+            <input type="text" id="profile-nameEn">
+          </div>
+          <div class="field">
+            <label>肩書き（日本語）</label>
+            <input type="text" id="profile-role">
+          </div>
+        </div>
+        <div class="field">
+          <label>本文（1段落目・Enterキーで改行できます）</label>
+          <textarea id="profile-body1"></textarea>
+        </div>
+        <div class="field">
+          <label>本文（2段落目・Enterキーで改行できます）</label>
+          <textarea id="profile-body2"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ GALLERY ============ -->
+    <div class="view" id="view-gallery">
+      <div class="panel">
+        <h2>ギャラリーセクションの見出し</h2>
+        <div class="grid-2">
+          <div class="field">
+            <label>見出しラベル（英語）</label>
+            <input type="text" id="gallery-eyebrow">
+          </div>
+          <div class="field">
+            <label>タイトル</label>
+            <input type="text" id="gallery-title">
+          </div>
+        </div>
+        <div class="field">
+          <label>説明文（Enterキーで改行できます）</label>
+          <textarea id="gallery-lead"></textarea>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>ギャラリー</h2>
+        <p class="hint">カテゴリー名は自由に入力できます（同じカテゴリー名を使うとタブでまとまります）。</p>
+        <div id="gallery-list"></div>
+        <button class="add-btn" id="gallery-add">＋ 写真を追加</button>
+      </div>
+    </div>
+
+    <!-- ============ PLANS ============ -->
+    <div class="view" id="view-plans">
+      <div class="panel">
+        <h2>撮影プランセクションの見出し</h2>
+        <div class="grid-2">
+          <div class="field">
+            <label>見出しラベル（英語）</label>
+            <input type="text" id="plans-eyebrow">
+          </div>
+          <div class="field">
+            <label>タイトル</label>
+            <input type="text" id="plans-title">
+          </div>
+        </div>
+        <div class="field" style="margin-bottom:0;">
+          <label>下部ボタンの文言</label>
+          <input type="text" id="plans-ctaLabel">
+        </div>
+      </div>
+      <div class="panel">
+        <h2>撮影プラン・料金</h2>
+        <p class="hint">カテゴリー（タブ）ごとにプランを設定します。</p>
+        <div class="cat-tabs" id="plan-cat-tabs"></div>
+        <button class="add-btn" id="plan-cat-add" style="margin-bottom:24px;">＋ カテゴリーを追加</button>
+        <div id="plan-cat-editor"></div>
+      </div>
+    </div>
+
+    <!-- ============ VOICES ============ -->
+    <div class="view" id="view-voices">
+      <div class="panel">
+        <h2>お客様の声セクションの見出し</h2>
+        <div class="grid-2">
+          <div class="field">
+            <label>見出しラベル（英語）</label>
+            <input type="text" id="voices-eyebrow">
+          </div>
+          <div class="field">
+            <label>タイトル</label>
+            <input type="text" id="voices-title">
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>お客様の声</h2>
+        <div id="voices-list"></div>
+        <button class="add-btn" id="voices-add">＋ 声を追加</button>
+      </div>
+    </div>
+
+    <!-- ============ FAQ ============ -->
+    <div class="view" id="view-faq">
+      <div class="panel">
+        <h2>よくある質問セクションの見出し</h2>
+        <div class="grid-2">
+          <div class="field">
+            <label>見出しラベル（英語）</label>
+            <input type="text" id="faq-eyebrow">
+          </div>
+          <div class="field">
+            <label>タイトル</label>
+            <input type="text" id="faq-title">
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>よくある質問（カテゴリー別）</h2>
+        <p class="hint">回答はEnterキーで改行できます。スマホで読みやすいよう、20〜25文字程度で改行するのがおすすめです。</p>
+        <div class="cat-tabs" id="faq-cat-tabs"></div>
+        <button class="add-btn" id="faq-cat-add" style="margin-bottom:24px;">＋ カテゴリーを追加</button>
+        <div id="faq-cat-editor"></div>
+      </div>
+    </div>
+
+    <!-- ============ TERMS ============ -->
+    <div class="view" id="view-terms">
+      <div class="panel">
+        <h2>ご利用規約セクションの見出し（ホーム画面）</h2>
+        <div class="grid-2">
+          <div class="field">
+            <label>見出しラベル（英語）</label>
+            <input type="text" id="terms-eyebrow">
+          </div>
+          <div class="field">
+            <label>タイトル</label>
+            <input type="text" id="terms-title">
+          </div>
+        </div>
+        <div class="field">
+          <label>説明文（Enterキーで改行できます）</label>
+          <textarea id="terms-lead"></textarea>
+        </div>
+        <div class="field" style="margin-bottom:0;">
+          <label>リンクの文言（例：詳しくはこちらをご覧ください）</label>
+          <input type="text" id="terms-linkLabel">
+        </div>
+      </div>
+      <div class="panel">
+        <h2>規約の内容（専用ページに表示されます）</h2>
+        <p class="hint">本文はEnterキーで改行できます。料金など表にしたい項目は「表の行」から追加してください。</p>
+        <div id="terms-section-list"></div>
+        <button class="add-btn" id="terms-section-add">＋ 項目を追加</button>
+      </div>
+    </div>
+
+    <!-- ============ CONTACT ============ -->
+    <div class="view" id="view-contact">
+      <div class="panel">
+        <h2>お問い合わせセクション</h2>
+        <div class="field">
+          <label>見出し</label>
+          <input type="text" id="contact-heading">
+        </div>
+        <div class="field">
+          <label>本文</label>
+          <textarea id="contact-body"></textarea>
+        </div>
+        <div class="grid-3">
+          <div class="field">
+            <label>メールアドレス</label>
+            <input type="email" id="contact-email">
+          </div>
+          <div class="field">
+            <label>Instagramユーザー名（@から入力・アイコンのリンク先に自動反映されます）</label>
+            <input type="text" id="contact-instagram">
+          </div>
+          <div class="field">
+            <label>電話番号</label>
+            <input type="text" id="contact-tel">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="./data.js"></script>
+<script>
+let content = null;
+let activePlanCatKey = null;
+
+async function init() {
+  content = await loadContent();
+  fillBrandForm();
+  fillHeroForm();
+  fillProfileForm();
+  fillSectionHeadingsForm();
+  renderGalleryList();
+  renderPlanTabs();
+  renderVoicesList();
+  renderFaqTabs();
+  renderTermsSectionList();
+  fillContactForm();
+
+  document.getElementById('loadingScreen').style.display = 'none';
+  document.getElementById('shell').style.display = 'grid';
+}
+
+/* ---------- ナビゲーション ---------- */
+document.getElementById('sideNav').addEventListener('click', (e) => {
+  const a = e.target.closest('a');
+  if(!a) return;
+  document.querySelectorAll('.side-nav a').forEach(el => el.classList.remove('active'));
+  a.classList.add('active');
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-' + a.dataset.view).classList.add('active');
+  document.getElementById('pageTitle').textContent = a.textContent;
+});
+
+function updatePreview(inputId, imgId) {
+  const url = document.getElementById(inputId).value;
+  const img = document.getElementById(imgId);
+  img.src = url;
+  img.style.display = url ? 'block' : 'none';
+}
+
+/* ---------- 基本情報 ---------- */
+function fillBrandForm() {
+  document.getElementById('brand-logoLabel').value = content.brand.logoLabel;
+  document.getElementById('brand-nameEn').value = content.brand.nameEn;
+  document.getElementById('brand-nameJa').value = content.brand.nameJa;
+  document.getElementById('footer-copyright').value = content.footer.copyright;
+}
+function collectBrandForm() {
+  content.brand.logoLabel = document.getElementById('brand-logoLabel').value;
+  content.brand.nameEn = document.getElementById('brand-nameEn').value;
+  content.brand.nameJa = document.getElementById('brand-nameJa').value;
+  content.footer.copyright = document.getElementById('footer-copyright').value;
+}
+
+/* ---------- ヒーロー ---------- */
+function fillHeroForm() {
+  document.getElementById('hero-photo').value = content.hero.photo;
+  document.getElementById('hero-headline').value = content.hero.headline;
+  document.getElementById('hero-sub').value = content.hero.sub;
+  updatePreview('hero-photo','hero-photo-preview');
+}
+function collectHeroForm() {
+  content.hero.photo = document.getElementById('hero-photo').value;
+  content.hero.headline = document.getElementById('hero-headline').value;
+  content.hero.sub = document.getElementById('hero-sub').value;
+}
+
+/* ---------- プロフィール ---------- */
+function fillProfileForm() {
+  document.getElementById('profile-eyebrow').value = content.sections.profile.eyebrow;
+  document.getElementById('profile-photo').value = content.profile.photo;
+  document.getElementById('profile-nameEn').value = content.profile.nameEn;
+  document.getElementById('profile-role').value = content.profile.role;
+  document.getElementById('profile-body1').value = content.profile.body1;
+  document.getElementById('profile-body2').value = content.profile.body2;
+  updatePreview('profile-photo','profile-photo-preview');
+}
+function collectProfileForm() {
+  content.sections.profile.eyebrow = document.getElementById('profile-eyebrow').value;
+  content.profile.photo = document.getElementById('profile-photo').value;
+  content.profile.nameEn = document.getElementById('profile-nameEn').value;
+  content.profile.role = document.getElementById('profile-role').value;
+  content.profile.body1 = document.getElementById('profile-body1').value;
+  content.profile.body2 = document.getElementById('profile-body2').value;
+}
+
+/* ---------- セクション見出し(プラン/ギャラリー/声) ---------- */
+function fillSectionHeadingsForm() {
+  document.getElementById('plans-eyebrow').value = content.sections.plans.eyebrow;
+  document.getElementById('plans-title').value = content.sections.plans.title;
+  document.getElementById('plans-ctaLabel').value = content.sections.plans.ctaLabel;
+  document.getElementById('gallery-eyebrow').value = content.sections.gallery.eyebrow;
+  document.getElementById('gallery-title').value = content.sections.gallery.title;
+  document.getElementById('gallery-lead').value = content.sections.gallery.lead;
+  document.getElementById('voices-eyebrow').value = content.sections.voices.eyebrow;
+  document.getElementById('voices-title').value = content.sections.voices.title;
+  document.getElementById('faq-eyebrow').value = content.sections.faq.eyebrow;
+  document.getElementById('faq-title').value = content.sections.faq.title;
+  document.getElementById('terms-eyebrow').value = content.sections.terms.eyebrow;
+  document.getElementById('terms-title').value = content.sections.terms.title;
+  document.getElementById('terms-lead').value = content.sections.terms.lead;
+  document.getElementById('terms-linkLabel').value = content.sections.terms.linkLabel;
+}
+function collectSectionHeadingsForm() {
+  content.sections.plans.eyebrow = document.getElementById('plans-eyebrow').value;
+  content.sections.plans.title = document.getElementById('plans-title').value;
+  content.sections.plans.ctaLabel = document.getElementById('plans-ctaLabel').value;
+  content.sections.gallery.eyebrow = document.getElementById('gallery-eyebrow').value;
+  content.sections.gallery.title = document.getElementById('gallery-title').value;
+  content.sections.gallery.lead = document.getElementById('gallery-lead').value;
+  content.sections.voices.eyebrow = document.getElementById('voices-eyebrow').value;
+  content.sections.voices.title = document.getElementById('voices-title').value;
+  content.sections.faq.eyebrow = document.getElementById('faq-eyebrow').value;
+  content.sections.faq.title = document.getElementById('faq-title').value;
+  content.sections.terms.eyebrow = document.getElementById('terms-eyebrow').value;
+  content.sections.terms.title = document.getElementById('terms-title').value;
+  content.sections.terms.lead = document.getElementById('terms-lead').value;
+  content.sections.terms.linkLabel = document.getElementById('terms-linkLabel').value;
+}
+
+/* ---------- GALLERY (繰り返し) ---------- */
+function renderGalleryList() {
+  const el = document.getElementById('gallery-list');
+  el.innerHTML = content.gallery.map((g, i) => `
+    <div class="repeat-item">
+      <div class="item-head">
+        <span class="item-num en">PHOTO ${i+1}</span>
+        <button class="btn btn-danger" onclick="removeGallery(${i})">削除</button>
+      </div>
+      <div class="field">
+        <label>写真URL</label>
+        <input type="url" value="${escAttr(g.photo)}" oninput="content.gallery[${i}].photo=this.value; document.getElementById('gallery-img-${i}').src=this.value;">
+        <img class="img-preview" id="gallery-img-${i}" src="${escAttr(g.photo)}">
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>カテゴリー名（タブに表示）</label>
+          <input type="text" value="${escAttr(g.catLabel)}" oninput="content.gallery[${i}].catLabel=this.value; content.gallery[${i}].cat=toKey(this.value);">
+        </div>
+        <div class="field">
+          <label>キャプション</label>
+          <input type="text" value="${escAttr(g.caption)}" oninput="content.gallery[${i}].caption=this.value">
+        </div>
+      </div>
+    </div>`).join('');
+}
+function removeGallery(i) { content.gallery.splice(i,1); renderGalleryList(); }
+document.getElementById('gallery-add').addEventListener('click', () => {
+  content.gallery.push({ cat: "new", catLabel: "新しいカテゴリー", photo: "https://picsum.photos/seed/new" + Date.now() + "/600/750", caption: "キャプションを入力" });
+  renderGalleryList();
+});
+function toKey(label) {
+  return "cat_" + label.replace(/[^a-zA-Z0-9ぁ-んァ-ヶ一-龠]/g, '').slice(0,10) + "_" + Math.random().toString(36).slice(2,6);
+}
+
+/* ---------- PLANS (カテゴリー×プラン) ---------- */
+function renderPlanTabs() {
+  const tabsEl = document.getElementById('plan-cat-tabs');
+  if (!activePlanCatKey && content.planCategories.length) activePlanCatKey = content.planCategories[0].key;
+  tabsEl.innerHTML = content.planCategories.map(cat =>
+    `<button class="cat-tab-btn ${cat.key===activePlanCatKey?'active':''}" onclick="switchPlanCat('${cat.key}')">${escHtml(cat.label)}</button>`
+  ).join('');
+  renderPlanCatEditor();
+}
+function switchPlanCat(key) { activePlanCatKey = key; renderPlanTabs(); }
+document.getElementById('plan-cat-add').addEventListener('click', () => {
+  const key = "cat_" + Math.random().toString(36).slice(2,8);
+  content.planCategories.push({
+    key, label: "新しいカテゴリー", labelEn: "New Category",
+    photo: "https://picsum.photos/seed/newcat" + Date.now() + "/700/500",
+    intro: "説明文を入力してください。", notes: [],
+    plans: [{ name: "Standard Plan", popular: true, price: "¥0", desc: "説明", duration: "撮影時間 1時間前後", delivery: "データ納品 0cut" }]
+  });
+  activePlanCatKey = key;
+  renderPlanTabs();
+});
+
+function renderPlanCatEditor() {
+  const editorEl = document.getElementById('plan-cat-editor');
+  const cat = content.planCategories.find(c => c.key === activePlanCatKey);
+  if (!cat) { editorEl.innerHTML = ''; return; }
+  const catIndex = content.planCategories.indexOf(cat);
+
+  editorEl.innerHTML = `
+    <div class="grid-2">
+      <div class="field">
+        <label>タブ名（日本語）</label>
+        <input type="text" value="${escAttr(cat.label)}" oninput="content.planCategories[${catIndex}].label=this.value; renderPlanTabs();">
+      </div>
+      <div class="field">
+        <label>英語表記（写真の下に小さく表示されます）</label>
+        <input type="text" value="${escAttr(cat.labelEn || '')}" oninput="content.planCategories[${catIndex}].labelEn=this.value">
+      </div>
+    </div>
+    <div class="field">
+      <label>カード用の代表写真URL</label>
+      <input type="url" value="${escAttr(cat.photo || '')}" oninput="content.planCategories[${catIndex}].photo=this.value; document.getElementById('plancat-img-${catIndex}').src=this.value;">
+      <img class="img-preview" id="plancat-img-${catIndex}" src="${escAttr(cat.photo || '')}">
+    </div>
+    <div class="field">
+      <label>紹介文（太字にしたい部分は &lt;b&gt;〜&lt;/b&gt; で囲めます）</label>
+      <textarea oninput="content.planCategories[${catIndex}].intro=this.value">${escHtml(cat.intro)}</textarea>
+    </div>
+    <div class="field">
+      <label>注意書き（1行に1つ、改行で区切ってください）</label>
+      <textarea oninput="content.planCategories[${catIndex}].notes=this.value.split('\\n').filter(x=>x.trim())">${escHtml(cat.notes.join('\n'))}</textarea>
+    </div>
+    <button class="btn btn-danger" onclick="removePlanCat(${catIndex})">このカテゴリーを削除</button>
+    <h2 style="margin-top:26px;">プラン一覧</h2>
+    <p class="hint">「1番人気」をONにしたプランが色付きで強調表示されます。</p>
+    <div id="plan-list-${catIndex}"></div>
+    <button class="add-btn" onclick="addPlan(${catIndex})">＋ プランを追加</button>
+  `;
+  renderPlanList(catIndex);
+}
+
+function renderPlanList(catIndex) {
+  const cat = content.planCategories[catIndex];
+  const listEl = document.getElementById('plan-list-' + catIndex);
+  listEl.innerHTML = cat.plans.map((p, pi) => `
+    <div class="repeat-item">
+      <div class="item-head">
+        <span class="item-num en">PLAN ${pi+1}</span>
+        <button class="btn btn-danger" onclick="removePlan(${catIndex}, ${pi})">削除</button>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>プラン名</label>
+          <input type="text" value="${escAttr(p.name)}" oninput="content.planCategories[${catIndex}].plans[${pi}].name=this.value">
+        </div>
+        <div class="field">
+          <label>価格（例：¥18,000）</label>
+          <input type="text" value="${escAttr(p.price)}" oninput="content.planCategories[${catIndex}].plans[${pi}].price=this.value">
+        </div>
+      </div>
+      <div class="field">
+        <label>説明文</label>
+        <textarea oninput="content.planCategories[${catIndex}].plans[${pi}].desc=this.value">${escHtml(p.desc)}</textarea>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>撮影時間</label>
+          <input type="text" value="${escAttr(p.duration)}" oninput="content.planCategories[${catIndex}].plans[${pi}].duration=this.value">
+        </div>
+        <div class="field">
+          <label>データ納品</label>
+          <input type="text" value="${escAttr(p.delivery)}" oninput="content.planCategories[${catIndex}].plans[${pi}].delivery=this.value">
+        </div>
+      </div>
+      <div class="toggle-row" style="margin-bottom:0;">
+        <label class="switch">
+          <input type="checkbox" ${p.popular?'checked':''} onchange="content.planCategories[${catIndex}].plans[${pi}].popular=this.checked">
+          <span class="slider"></span>
+        </label>
+        <label>「1番人気」バッジを表示する</label>
+      </div>
+    </div>`).join('');
+}
+function addPlan(catIndex) {
+  content.planCategories[catIndex].plans.push({ name: "New Plan", popular: false, price: "¥0", desc: "説明を入力してください", duration: "撮影時間 1時間前後", delivery: "データ納品 0cut" });
+  renderPlanList(catIndex);
+}
+function removePlan(catIndex, pi) {
+  content.planCategories[catIndex].plans.splice(pi,1);
+  renderPlanList(catIndex);
+}
+function removePlanCat(catIndex) {
+  if(!confirm('このカテゴリーごと削除します。よろしいですか？')) return;
+  content.planCategories.splice(catIndex,1);
+  activePlanCatKey = content.planCategories.length ? content.planCategories[0].key : null;
+  renderPlanTabs();
+}
+
+/* ---------- VOICES (繰り返し) ---------- */
+function renderVoicesList() {
+  const el = document.getElementById('voices-list');
+  el.innerHTML = content.voices.map((v, i) => `
+    <div class="repeat-item">
+      <div class="item-head">
+        <span class="item-num en">VOICE ${i+1}</span>
+        <button class="btn btn-danger" onclick="removeVoice(${i})">削除</button>
+      </div>
+      <div class="field">
+        <label>コメント</label>
+        <textarea oninput="content.voices[${i}].text=this.value">${escHtml(v.text)}</textarea>
+      </div>
+      <div class="field" style="margin-bottom:0;">
+        <label>お名前・撮影内容</label>
+        <input type="text" value="${escAttr(v.who)}" oninput="content.voices[${i}].who=this.value">
+      </div>
+    </div>`).join('');
+}
+function removeVoice(i) { content.voices.splice(i,1); renderVoicesList(); }
+document.getElementById('voices-add').addEventListener('click', () => {
+  content.voices.push({ text: "コメントを入力してください。", who: "お名前 ／ 撮影内容" });
+  renderVoicesList();
+});
+
+/* ---------- FAQ (カテゴリー×質問) ---------- */
+let activeFaqCatKey = null;
+
+function renderFaqTabs() {
+  const tabsEl = document.getElementById('faq-cat-tabs');
+  if (!content.faqCategories) content.faqCategories = [];
+  if (!activeFaqCatKey && content.faqCategories.length) activeFaqCatKey = content.faqCategories[0].key;
+  tabsEl.innerHTML = content.faqCategories.map(cat =>
+    `<button class="cat-tab-btn ${cat.key===activeFaqCatKey?'active':''}" onclick="switchFaqCat('${cat.key}')">${escHtml(cat.title)}</button>`
+  ).join('');
+  renderFaqCatEditor();
+}
+function switchFaqCat(key) { activeFaqCatKey = key; renderFaqTabs(); }
+document.getElementById('faq-cat-add').addEventListener('click', () => {
+  const key = "faqcat_" + Math.random().toString(36).slice(2,8);
+  content.faqCategories.push({
+    key, title: "新しいカテゴリー",
+    items: [{ question: "質問を入力してください", answer: "回答を入力してください。" }]
+  });
+  activeFaqCatKey = key;
+  renderFaqTabs();
+});
+
+function renderFaqCatEditor() {
+  const editorEl = document.getElementById('faq-cat-editor');
+  const cat = content.faqCategories.find(c => c.key === activeFaqCatKey);
+  if (!cat) { editorEl.innerHTML = ''; return; }
+  const catIndex = content.faqCategories.indexOf(cat);
+
+  editorEl.innerHTML = `
+    <div class="field">
+      <label>カテゴリー名</label>
+      <input type="text" value="${escAttr(cat.title)}" oninput="content.faqCategories[${catIndex}].title=this.value; renderFaqTabs();">
+    </div>
+    <button class="btn btn-danger" onclick="removeFaqCat(${catIndex})">このカテゴリーを削除</button>
+    <h2 style="margin-top:26px;">質問一覧</h2>
+    <div id="faq-item-list-${catIndex}"></div>
+    <button class="add-btn" onclick="addFaqItem(${catIndex})">＋ 質問を追加</button>
+  `;
+  renderFaqItemList(catIndex);
+}
+
+function renderFaqItemList(catIndex) {
+  const cat = content.faqCategories[catIndex];
+  const listEl = document.getElementById('faq-item-list-' + catIndex);
+  listEl.innerHTML = cat.items.map((f, fi) => `
+    <div class="repeat-item">
+      <div class="item-head">
+        <span class="item-num en">Q&amp;A ${fi+1}</span>
+        <button class="btn btn-danger" onclick="removeFaqItem(${catIndex}, ${fi})">削除</button>
+      </div>
+      <div class="field">
+        <label>質問</label>
+        <input type="text" value="${escAttr(f.question)}" oninput="content.faqCategories[${catIndex}].items[${fi}].question=this.value">
+      </div>
+      <div class="field" style="margin-bottom:0;">
+        <label>回答（Enterキーで改行できます。スマホで読みやすいよう20〜25文字程度での改行がおすすめです）</label>
+        <textarea oninput="content.faqCategories[${catIndex}].items[${fi}].answer=this.value">${escHtml(f.answer)}</textarea>
+      </div>
+    </div>`).join('');
+}
+function addFaqItem(catIndex) {
+  content.faqCategories[catIndex].items.push({ question: "質問を入力してください", answer: "回答を入力してください。" });
+  renderFaqItemList(catIndex);
+}
+function removeFaqItem(catIndex, fi) {
+  content.faqCategories[catIndex].items.splice(fi,1);
+  renderFaqItemList(catIndex);
+}
+function removeFaqCat(catIndex) {
+  if(!confirm('このカテゴリーごと削除します。よろしいですか？')) return;
+  content.faqCategories.splice(catIndex,1);
+  activeFaqCatKey = content.faqCategories.length ? content.faqCategories[0].key : null;
+  renderFaqTabs();
+}
+
+/* ---------- TERMS (繰り返し・行の表つき) ---------- */
+function renderTermsSectionList() {
+  if (!content.termsSections) content.termsSections = [];
+  const el = document.getElementById('terms-section-list');
+  el.innerHTML = content.termsSections.map((t, i) => `
+    <div class="repeat-item">
+      <div class="item-head">
+        <span class="item-num en">TERM ${i+1}</span>
+        <button class="btn btn-danger" onclick="removeTermsSection(${i})">削除</button>
+      </div>
+      <div class="field">
+        <label>見出し</label>
+        <input type="text" value="${escAttr(t.title)}" oninput="content.termsSections[${i}].title=this.value">
+      </div>
+      <div class="field" style="margin-bottom:14px;">
+        <label>本文（Enterキーで改行できます）</label>
+        <textarea oninput="content.termsSections[${i}].body=this.value">${escHtml(t.body)}</textarea>
+      </div>
+      <div class="field" style="margin-bottom:8px;">
+        <label>表の行（料金表など。不要な場合は空のままでOK）</label>
+      </div>
+      <div id="terms-row-list-${i}"></div>
+      <button class="add-btn btn-small" style="width:auto; display:inline-flex;" onclick="addTermsRow(${i})">＋ 行を追加</button>
+    </div>`).join('');
+  content.termsSections.forEach((t, i) => renderTermsRowList(i));
+}
+function renderTermsRowList(i) {
+  const rowEl = document.getElementById('terms-row-list-' + i);
+  const rows = content.termsSections[i].rows || [];
+  rowEl.innerHTML = rows.map((r, ri) => `
+    <div class="grid-2" style="margin-bottom:10px;">
+      <div class="field" style="margin-bottom:0;">
+        <input type="text" placeholder="ラベル（例：前日）" value="${escAttr(r.label)}" oninput="content.termsSections[${i}].rows[${ri}].label=this.value">
+      </div>
+      <div class="field" style="margin-bottom:0; display:flex; gap:8px;">
+        <input type="text" placeholder="値（例：¥3,000）" value="${escAttr(r.value)}" oninput="content.termsSections[${i}].rows[${ri}].value=this.value" style="flex:1;">
+        <button class="btn btn-danger btn-small" onclick="removeTermsRow(${i}, ${ri})">×</button>
+      </div>
+    </div>`).join('');
+}
+function addTermsRow(i) {
+  if (!content.termsSections[i].rows) content.termsSections[i].rows = [];
+  content.termsSections[i].rows.push({ label: "", value: "" });
+  renderTermsRowList(i);
+}
+function removeTermsRow(i, ri) {
+  content.termsSections[i].rows.splice(ri, 1);
+  renderTermsRowList(i);
+}
+function removeTermsSection(i) {
+  content.termsSections.splice(i, 1);
+  renderTermsSectionList();
+}
+document.getElementById('terms-section-add').addEventListener('click', () => {
+  if (!content.termsSections) content.termsSections = [];
+  content.termsSections.push({ title: "新しい項目", body: "本文を入力してください。", rows: [] });
+  renderTermsSectionList();
+});
+
+/* ---------- CONTACT ---------- */
+function fillContactForm() {
+  document.getElementById('contact-heading').value = content.contact.heading;
+  document.getElementById('contact-body').value = content.contact.body;
+  document.getElementById('contact-email').value = content.contact.email;
+  document.getElementById('contact-instagram').value = content.contact.instagram;
+  document.getElementById('contact-tel').value = content.contact.tel;
+}
+function collectContactForm() {
+  content.contact.heading = document.getElementById('contact-heading').value;
+  content.contact.body = document.getElementById('contact-body').value;
+  content.contact.email = document.getElementById('contact-email').value;
+  content.contact.instagram = document.getElementById('contact-instagram').value;
+  content.contact.tel = document.getElementById('contact-tel').value;
+}
+
+/* ---------- 保存 / リセット ---------- */
+document.getElementById('saveBtn').addEventListener('click', async () => {
+  const btn = document.getElementById('saveBtn');
+  const statusEl = document.getElementById('statusMsg');
+  btn.disabled = true;
+  btn.textContent = '保存中…';
+  try {
+    collectBrandForm();
+    collectHeroForm();
+    collectProfileForm();
+    collectSectionHeadingsForm();
+    collectContactForm();
+    // gallery / plans / voices は入力のたびに content に反映済み
+
+    const result = await saveContent(content);
+    if (!result) throw new Error('no result');
+    statusEl.textContent = '✓ 保存しました';
+    statusEl.className = 'status-msg show ok';
+  } catch (e) {
+    if (!window.storage) {
+      statusEl.textContent = '公開サイトでは「data.jsを書き出す」から更新してください';
+    } else {
+      statusEl.textContent = '保存に失敗しました。もう一度お試しください';
+    }
+    statusEl.className = 'status-msg show err';
+    console.error(e);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '保存する';
+    setTimeout(() => statusEl.classList.remove('show'), 4000);
+  }
+});
+
+/* ---------- 公開サイト用 data.js 書き出し ---------- */
+function buildDataJsText() {
+  const json = JSON.stringify(content, null, 2);
+  return `/* ============================================================
+   共有データモデル
+   このサイトと管理サイトは window.storage の同じキー
+   ("site-content", shared=true) を読み書きすることで同期します。
+   ここにあるオブジェクトは「まだ一度も保存されていないときの初期値」です。
+
+   ※ 公開サイトでは window.storage が使えないため、このファイル
+   （data.js）が実質的なコンテンツの保存場所になります。
+   管理サイトで編集後、「data.jsを書き出す」でダウンロードした
+   このファイルを、公開先サーバーの data.js と差し替えてください。
+   ============================================================ */
+
+const STORAGE_KEY = "site-content";
+
+const DEFAULT_CONTENT = ${json};
+
+/* 保存されている内容を取得。無ければデフォルトを返す */
+async function loadContent() {
+  try {
+    if (!window.storage) throw new Error("storage unavailable");
+    const result = await window.storage.get(STORAGE_KEY, true);
+    if (result && result.value) {
+      const saved = JSON.parse(result.value);
+      return deepMerge(structuredClone(DEFAULT_CONTENT), saved);
+    }
+  } catch (e) {
+    console.log("保存データが見つからないため初期値を使用します", e);
+  }
+  return structuredClone(DEFAULT_CONTENT);
+}
+
+async function saveContent(content) {
+  if (!window.storage) {
+    throw new Error("この画面ではデータの保存機能が使えません（Claudeのアーティファクトとして開いた場合にのみ保存できます）");
+  }
+  return await window.storage.set(STORAGE_KEY, JSON.stringify(content), true);
+}
+
+function deepMerge(base, override) {
+  if (Array.isArray(base)) return Array.isArray(override) ? override : base;
+  if (typeof base === "object" && base !== null) {
+    const out = { ...base };
+    for (const k in override || {}) {
+      out[k] = deepMerge(base[k], override[k]);
+    }
+    return out;
+  }
+  return override !== undefined ? override : base;
+}
+`;
+}
+
+document.getElementById('exportBtn').addEventListener('click', () => {
+  collectBrandForm();
+  collectHeroForm();
+  collectProfileForm();
+  collectSectionHeadingsForm();
+  collectContactForm();
+
+  const text = buildDataJsText();
+  const blob = new Blob([text], { type: 'text/javascript' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'data.js';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+
+  document.getElementById('exportBanner').style.display = 'block';
+});
+
+document.getElementById('resetBtn').addEventListener('click', async () => {
+  if (!confirm('すべての内容を初期状態に戻します。保存していない変更も失われます。よろしいですか？')) return;
+  content = structuredClone(DEFAULT_CONTENT);
+  await saveContent(content);
+  fillBrandForm();
+  fillHeroForm();
+  fillProfileForm();
+  fillSectionHeadingsForm();
+  renderGalleryList();
+  activePlanCatKey = content.planCategories[0] ? content.planCategories[0].key : null;
+  renderPlanTabs();
+  renderVoicesList();
+  renderFaqTabs();
+  renderTermsSectionList();
+  fillContactForm();
+  const statusEl = document.getElementById('statusMsg');
+  statusEl.textContent = '✓ 初期状態に戻しました';
+  statusEl.className = 'status-msg show ok';
+  setTimeout(() => statusEl.classList.remove('show'), 3000);
+});
+
+/* ---------- helpers ---------- */
+function escHtml(str) {
+  if (str === undefined || str === null) return '';
+  return String(str).replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));
+}
+function escAttr(str) {
+  if (str === undefined || str === null) return '';
+  return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+
+init();
+</script>
+</body>
+</html>
