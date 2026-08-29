@@ -94,13 +94,22 @@
   .g-card{position:relative; overflow:hidden; aspect-ratio:4/5;}
   .g-card img{width:100%; height:100%; object-fit:cover; transition:transform 1s cubic-bezier(.16,1,.3,1); filter:saturate(0.96);}
   .g-card:hover img{transform:scale(1.05);}
-  .g-cap{
-    position:absolute; left:0; right:0; bottom:0; padding:16px; color:#fff; font-size:13px;
-    background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.72) 100%);
-    opacity:0; transition:opacity .3s ease;
-  }
-  .g-card:hover .g-cap{opacity:1;}
   .g-hide{display:none;}
+  .g-card{cursor:pointer;}
+
+  .lightbox{
+    position:fixed; inset:0; background:rgba(20,19,17,0.92); z-index:400;
+    display:flex; align-items:center; justify-content:center; padding:40px;
+    opacity:0; pointer-events:none; transition:opacity .25s ease;
+  }
+  .lightbox.open{opacity:1; pointer-events:auto;}
+  .lightbox img{max-width:100%; max-height:100%; object-fit:contain; border-radius:2px;}
+  .lightbox-close{
+    position:absolute; top:24px; right:28px; width:42px; height:42px; border-radius:50%;
+    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.3); color:#fff;
+    font-size:22px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  .lightbox-close:hover{background:rgba(255,255,255,0.22);}
 
   /* ---------- plan category grid (komatsubara-sota.com 風) ---------- */
   .cat-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:32px 40px; margin-top:20px;}
@@ -266,7 +275,6 @@
     /* gallery */
     .gallery-tabs{gap:7px; margin:18px 0 20px;}
     .tab-btn{font-size:11.5px; padding:8px 14px;}
-    .g-cap{font-size:11.5px; padding:12px;}
 
     /* voices */
     .voices{gap:20px; margin-top:22px;}
@@ -354,6 +362,11 @@
     <div class="g-grid" id="grid"></div>
   </div>
 </section>
+
+<div class="lightbox" id="lightbox">
+  <button type="button" class="lightbox-close" id="lightboxClose" aria-label="閉じる">×</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
 
 <section id="voices">
   <div class="wrap">
@@ -703,10 +716,9 @@ function renderContent(c) {
   tabsEl.innerHTML = `<button class="tab-btn active" data-filter="all">すべて</button>` +
     cats.map(([key, label]) => `<button class="tab-btn" data-filter="${key}">${escapeHtml(label)}</button>`).join('');
   const gridEl = document.getElementById('grid');
-  gridEl.innerHTML = c.gallery.map(g => `
-    <div class="g-card" data-cat="${g.cat}">
+  gridEl.innerHTML = c.gallery.map((g, gi) => `
+    <div class="g-card" data-cat="${g.cat}" data-index="${gi}">
       <img src="${g.photo}" alt="${escapeHtml(g.caption)}">
-      <div class="g-cap">${escapeHtml(g.caption)}</div>
     </div>`).join('');
   tabsEl.addEventListener('click', (e) => {
     const btn = e.target.closest('.tab-btn');
@@ -717,6 +729,34 @@ function renderContent(c) {
     gridEl.querySelectorAll('.g-card').forEach(card => {
       card.classList.toggle('g-hide', f !== 'all' && card.dataset.cat !== f);
     });
+  });
+
+  // ライトボックス（写真クリックで拡大表示）
+  const lightboxEl = document.getElementById('lightbox');
+  const lightboxImgEl = document.getElementById('lightboxImg');
+  function openLightbox(index) {
+    const g = c.gallery[index];
+    if (!g) return;
+    lightboxImgEl.src = g.photo;
+    lightboxImgEl.alt = g.caption || '';
+    lightboxEl.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lightboxEl.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  gridEl.addEventListener('click', (e) => {
+    const card = e.target.closest('.g-card');
+    if (!card) return;
+    openLightbox(parseInt(card.dataset.index, 10));
+  });
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  lightboxEl.addEventListener('click', (e) => {
+    if (e.target === lightboxEl) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
   });
 
   // voices（ホームには先頭3件のみ表示。4件以上あれば「more view」で全件ページへ）
