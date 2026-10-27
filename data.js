@@ -1,0 +1,329 @@
+/* ============================================================
+   共有データモデル
+   このサイトと管理サイトは window.storage の同じキー
+   ("site-content", shared=true) を読み書きすることで同期します。
+   ここにあるオブジェクトは「まだ一度も保存されていないときの初期値」です。
+   ============================================================ */
+
+var STORAGE_KEY = "site-content";
+
+var DEFAULT_CONTENT = {
+  brand: {
+    nameEn: "Eri",
+    nameJa: "えり",
+    logoLabel: "Photographer"
+  },
+  hero: {
+    photo: "./images/hero-01.jpg",
+    headline: "特別な日だけじゃない、\nいつもの幸せを。",
+    sub: "何年経っても色褪せない思い出を形に。"
+  },
+  profile: {
+    photo: "./images/profile-eri.jpg",
+    nameEn: "Eri",
+    role: "フォトグラファー　えり",
+    body1: "埼玉在住の出張カメラマン。２児の母",
+    body2: "家族写真やナチュラルニューボンフォトをメインに撮影。\n小さなお子さんと関わるのが大好きです。"
+  },
+  sections: {
+    profile: { eyebrow: "PROFILE" },
+    plans: {
+      eyebrow: "PLAN / PRICE",
+      title: "撮影プラン / 料金",
+      lead: "ご用途に合わせてカテゴリー別にプランを\nご用意しています。気になるプランをクリックしてください。",
+      ctaLabel: "プランについて相談する"
+    },
+    gallery: {
+      eyebrow: "GALLERY",
+      title: "ギャラリー",
+      lead: "実際にご依頼いただいた撮影の一部です。"
+    },
+    voices: {
+      eyebrow: "VOICE",
+      title: "お客様の声"
+    },
+    faq: {
+      eyebrow: "FAQ",
+      title: "よくある質問"
+    },
+    terms: {
+      eyebrow: "TERMS",
+      title: "ご利用規約",
+      lead: "ご予約前に、撮影に関するお願いごとや\nキャンセル料・交通費についてご確認ください。",
+      linkLabel: "詳しくはこちらをご覧ください"
+    }
+  },
+  gallery: [
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-06.jpg", caption: "思わずこぼれる笑顔" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-03.jpg", caption: "お姉ちゃんと手をつないで" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/newborn-06.jpg", caption: "モーゼスバスケットでおやすみ" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/newborn-03.jpg", caption: "みんなの笑顔があふれるソファで" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/newborn-01.jpg", caption: "ミルクの時間もそのままに" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/newborn-05.jpg", caption: "家族みんなでソファのひととき" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-22.jpg", caption: "紫の傘で満面の笑み" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-13.jpg", caption: "お兄ちゃんたちの袴姿" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/ouchi-05.jpg", caption: "陽だまりの中で — 冬" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-12.jpg", caption: "パパの腕の中で" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-18.jpg", caption: "青い傘で鳥居の前に" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-30.jpg", caption: "パパに抱っこされて大笑い" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/ouchi-04.jpg", caption: "小さな手のひら — 春" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-10.jpg", caption: "てくてく歩く足元" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-25.jpg", caption: "歯の抜けた笑顔も宝物" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-24.jpg", caption: "鳥居の前で兄弟そろって" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-31.jpg", caption: "パパと顔を見合わせて" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-21.jpg", caption: "赤い傘と横顔" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-07.jpg", caption: "傘をさして神社の参道へ" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-04.jpg", caption: "わんこも一緒に家族写真" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-26.jpg", caption: "ふわっと宙に舞う笑顔" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-14.jpg", caption: "笛をふいてごきげん" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-17.jpg", caption: "赤い橋をそっと見つめて" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-20.jpg", caption: "草履の足元まで" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-32.jpg", caption: "ママとお姉ちゃんと一緒に" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-16.jpg", caption: "橋の上でにっこり" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-12.jpg", caption: "ちいさな手のぬくもり" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-11.jpg", caption: "ちょっぴり緊張の表情" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-23.jpg", caption: "手をつないで本殿の前へ" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-15.jpg", caption: "紫の傘で元気いっぱい" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-02.jpg", caption: "帯のうしろ姿まで" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-09.jpg", caption: "手をつないで、いざ参拝" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-08.jpg", caption: "ほっぺをむにゅっと" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-07.jpg", caption: "パパと見つめ合って" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/ouchi-06.jpg", caption: "ごきげんな寝顔 — 冬" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-19.jpg", caption: "鳥居の前でポーズ" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-22.jpg", caption: "花束とブーケハット — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-06.jpg", caption: "桜の下で親子のワンシーン — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-21.jpg", caption: "桜の下で撮影ごっこ — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-11.jpg", caption: "ランドセルをぎゅっと — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-14.jpg", caption: "桜の木の下で — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-04.jpg", caption: "花冠とブーケ — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-03.jpg", caption: "コスモス畑をおさんぽ — 秋" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-08.jpg", caption: "うさぎさんの笑顔 — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-24.jpg", caption: "桜と小川を見渡して — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-05.jpg", caption: "はじめの一歩 — 秋" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-16.jpg", caption: "桜の下で向かい合って — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-15.jpg", caption: "とびきりの笑顔 — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-13.jpg", caption: "赤ちゃんと一面のコスモス — 秋" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-10.jpg", caption: "桜と赤ちゃん — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-25.jpg", caption: "菜の花と桜のなかで" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-06.jpg", caption: "絵本タイムのひととき" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-02.jpg", caption: "お家のなにげない日常" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/newborn-02.jpg", caption: "ママの笑顔に包まれて" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-22.jpg", caption: "キッチンのママとおしゃべり" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-08.jpg", caption: "カードに夢中" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-10.jpg", caption: "お姉ちゃんと並んで" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-19.jpg", caption: "ごきげんな笑顔" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-04.jpg", caption: "リビングでごろん" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-02.jpg", caption: "おにいちゃんと並んでおやすみ" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-20.jpg", caption: "ごくごくタイム — モノクロ" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-26.jpg", caption: "思いっきりの笑顔" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/home-01.jpg", caption: "ソファで家族みんなで" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/home-11.jpg", caption: "弟をなでなで" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-30.jpg", caption: "ミニーのカチューシャでポーズ" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-18.jpg", caption: "小さな手" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-25.jpg", caption: "パパと腕相撲" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-17.jpg", caption: "パパのひざの上で" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-27.jpg", caption: "ケーキと一緒にバースデー" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-21.jpg", caption: "ごはんにっこり" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-16.jpg", caption: "指先でカードをえらぶ" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-09.jpg", caption: "兄弟のにぎやかな時間" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-11.jpg", caption: "窓辺でママと見つめ合って" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-18.jpg", caption: "ママに見守られてミルクタイム" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-13.jpg", caption: "ちいさな足" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-08.jpg", caption: "ママのひざの上で" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/ouchi-03.jpg", caption: "お兄ちゃんの抱っこデビュー — 冬" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-01.jpg", caption: "きょうだいみんなで赤ちゃんをのぞきこんで" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-14.jpg", caption: "くまさんと一緒にこんにちは" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/home-14.jpg", caption: "パパとおしゃべり" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/home-15.jpg", caption: "みんなでミルクタイム" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-05.jpg", caption: "パパの腕の中ですやすや" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/newborn-04.jpg", caption: "パパとママの腕の中で" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-12.jpg", caption: "マタニティフォト" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-24.jpg", caption: "ぬいぐるみに囲まれて" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-31.jpg", caption: "きょうだいでミルクごっこ" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-23.jpg", caption: "ダイニングでごはんタイム" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-29.jpg", caption: "カードをじーっと見つめて" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-28.jpg", caption: "パパと赤ちゃんのおもちゃタイム" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-13.jpg", caption: "こっちを見上げて" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-07.jpg", caption: "入学の記念に — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-01.jpg", caption: "コスモス畑で家族のひととき — 秋" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-17.jpg", caption: "桜とランドセル — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-09.jpg", caption: "コスモスの中で寄り添って — 秋" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-23.jpg", caption: "桜のトンネルで親子ショット — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-27.jpg", caption: "ひらり、桜の下で" },
+  ],
+  planOptions: [
+    { name: "土日祝日撮影", price: "+¥3,000", desc: "" },
+    { name: "レンタルお洋服", price: "別途相談", desc: "" },
+    { name: "ヘッドドレスつけ放題", price: "+¥1,500", desc: "" },
+    { name: "繁忙期シーズン加算", price: "+¥3,000", desc: "3月・4月の撮影に適用（平日・休日ともに適用）" },
+    { name: "出張費用", price: "別途相談", desc: "埼玉県北部の自宅からの距離に応じて（詳しくはお問合せください）" }
+  ],
+  planCategories: [
+    {
+      key: "family",
+      label: "家族写真",
+      labelEn: "Family",
+      lead: "季節のお花やお誕生日など\nご希望の場所で撮影が可能です。",
+      photo: "./images/family-sakura3.jpg",
+      intro: "ご家族の日常やイベントを、<b>自然な雰囲気のまま</b>残すプランです。",
+      notes: ["撮影は屋外・自然光の入る場所が中心です", "ご兄弟の追加料金はなし", "未就学のお子様も歓迎です"],
+      plans: [
+        { name: "Mini Plan", popular: false, price: "¥18,000", desc: "撮影を試してみたい方や短時間で撮りたい方", duration: "撮影時間 40分前後", delivery: "データ納品 15cut" },
+        { name: "Standard Plan", popular: true, price: "¥20,000", desc: "ご家族の大事なイベントや思い出をしっかり残したい方におすすめ", duration: "撮影時間 1時間前後", delivery: "データ納品 40cut" },
+        { name: "Premium Plan", popular: false, price: "¥26,000", desc: "少しの表情の変化も全て残したい方向け。様々なシーンをたくさんお届けします", duration: "撮影時間 1時間半前後", delivery: "データ納品 80cut" }
+      ]
+    },
+    {
+      key: "shichigosan",
+      label: "七五三",
+      labelEn: "Shichigosan",
+      photo: "./images/shichigosan-top2.jpg",
+      intro: "一生に一度の<b>ハレの日</b>を、自然な表情のまま残します。",
+      notes: ["着付け後のお時間に合わせて撮影します", "神社への同行も可能です", "ご兄弟姉妹の同時撮影も歓迎です"],
+      plans: [
+        { name: "Mini Plan", popular: false, price: "¥23,000", desc: "定番ショットのみを短時間で残したい方", duration: "撮影時間 40分前後", delivery: "データ納品 30cut" },
+        { name: "Standard Plan", popular: true, price: "¥26,000", desc: "ハレの日の記録をしっかり残したい方", duration: "撮影時間 1時間前後", delivery: "データ納品 70cut" },
+        { name: "Premium Plan", popular: false, price: "¥32,000", desc: "主役のお子様が複数いらっしゃる方、すべてのシーンを残したい方", duration: "撮影時間 1時間30分前後", delivery: "データ納品 100cut" }
+      ]
+    },
+    {
+      key: "omiyamairi",
+      label: "お宮参り",
+      labelEn: "Omiyamairi",
+      photo: "./images/miyamairi-01.jpg",
+      intro: "赤ちゃんとご家族にとって特別な一日を、<b>あたたかく</b>残します。",
+      notes: ["祖父母様とのご参加も歓迎です", "授乳・お世話のお時間は気にせずお伝えください", "神社での撮影許可はご自身でご確認ください"],
+      plans: [
+        { name: "Mini Plan", popular: false, price: "¥20,000", desc: "定番ショットのみを短時間で残したい方", duration: "撮影時間 40分前後", delivery: "データ納品 30cut" },
+        { name: "Standard Plan", popular: true, price: "¥22,000", desc: "ハレの日の記録をしっかり残したい方", duration: "撮影時間 1時間前後", delivery: "データ納品 50cut" },
+        { name: "Premium Plan", popular: false, price: "¥30,000", desc: "主役のお子様が複数いらっしゃる方、すべてのシーンを残したい方", duration: "撮影時間 1時間30分前後", delivery: "データ納品 100cut" }
+      ]
+    },
+    {
+      key: "uchiphoto",
+      label: "お家フォト",
+      labelEn: "Ouchi Photo",
+      photo: "./images/family-top.jpg",
+      intro: "<b>2歳まで</b>のお子様がいるご家庭で、お家で遊んだり、抱っこしたり、絵本を読んだり。そんな何気ない未来に残したい写真を撮るお手伝いをさせてください。",
+      notes: ["撮影場所はお家のみ・お家周辺となります", "ご兄弟の追加料金はなし", "ナチュラルニューボーン、マタニティも含みます", "2歳以上のお子さんのお家フォトは家族写真のPLAN価格になります"],
+      plans: [
+        { name: "Standard Plan", popular: false, price: "¥18,000", desc: "遊び、抱っこなど今残したい瞬間をしっかり", duration: "撮影時間 1時間前後", delivery: "データ納品 40cut" },
+        { name: "Premium Plan", popular: true, price: "¥23,000", desc: "たっぷり時間をかけてすべての瞬間を残したい方", duration: "撮影時間 1時間半前後", delivery: "データ納品 70cut" }
+      ]
+    }
+  ],
+  voices: [
+    { text: "春と秋に家族写真をお願いしています。撮っていただいた写真を見ると、やっぱり自分達だけでは残せない瞬間があるなと感じます。こどもの自然な表情、家族で笑い合っている空気感まで、自分達が撮る側だと見逃してしまう場面も丁寧に残してくださいます。私達にとっては「ただ写真を撮ってもらう人」ではなく、「会いたいから会いに行くフォトグラファーさん」です。", who: "E様 ／ 家族写真" },
+    { text: "今までお願いしてきたカメラマンさんの中で圧倒的いちばん！！撮影時のコミュニケーション、実際に見た景色や瞬間が蘇るような最高のキリトリ、丁寧すぎるセレクトに編集、どこをとっても100点満点のえりちゃん♡毎回子どもたちもとっても楽しそうでいきいきしていて、なにより母子ともにえりちゃんのことがだいすき！", who: "ai様 ／ 家族写真" },
+    { text: "とにかくeriさんがずっとニコニコ笑顔でケラケラ笑いながら撮影してくださるので自然と子供も笑顔で。ポージングの声掛けも指示を出すのではなく、子供との会話の延長にあって子供が嫌がったりすることはなく今までこんなに終始自然体に撮れたことがあったかと驚き。そして色が！光が！美しい！何度も見返したくなるし飾りたくなる宝物を撮っていただきお願いして良かったと毎度思います。", who: "em様 ／ 七五三" },
+    { text: "えりさんの撮影はとにかく楽しい！撮られている時間というより、なんか子どもたちとわちゃわちゃ楽しんでいたら、いつのまにか良い写真を撮っている！いつこんな写真撮っていたのー！？と、納品いただいた写真を見て驚きました。体当たりで子どもたちに接してくれて、子どもたちも笑っぱなしの遊びっぱなし！とても良い思い出ができました。", who: "nono様 ／ 季節の撮影会" },
+    { text: "自分で撮ると喧嘩してる２人を宥めながらシャッターを切るのが大変なので、えりさんがポケモンの話をしながら撮影してくれたおかげで姉弟ショットを撮れて嬉しかったです！納品してくださったふんわりとした色味も好みでまた撮影お願い出来たらと思っています。", who: "Y様 ／ 季節の撮影会" },
+    { text: "エリさん、思っていた以上に気さくで、明るくて楽しくて、撮影時間は笑顔溢れる時間で、沢山パワーもらえました。子供も楽しい時間を切り撮ってもらった感じで自然な表情なのに、親バカですがとびきり可愛く、美しく撮ってもらえて、データ来た時には泣けます！", who: "hana様 ／ 季節の撮影会" },
+    { text: "eriさんは本当に一人ひとりに全力で丁寧に向き合って撮影してくださいます。繊細で美しいお写真と、実際に会ったときの明るくエネルギッシュなギャップがすごく魅力的なカメラマンさまです！ママの『こうバチっと決めたい！』というお写真も、その子らしいありのままのお写真もどちらも残してくれるので、撮影してもらったお写真はどれを見ても大満足です。", who: "Yume様 ／ 季節の撮影会" },
+    { text: "遊びながら撮影してくれるし、撮影後も遊んでくれたりで我が家はえりちゃん大好き一家！パパでさえ、口を大きく開けて笑っちゃう。事前ヒアリングや、撮影後のフォローまで事細かく対応してくれるから、安心しかない。", who: "Aya様 ／ 季節の撮影会" },
+    { text: "コスモスを2年連続でお願いしました。どちらもとっても素敵に撮っていただき、私の宝物になっています。子どもたちの気分に合わせて優しく声をかけていただきながら、しっかりと可愛くなるようにアドバイスもくださり、可愛らしいものから楽しそうな笑顔のものまであり、撮ってもらう回数が増えて行くたびにいろいろな我が子も増えて幸せいっぱいです。色味もとても素敵で、えりさんの世界観、眼福です。", who: "S様 ／ 家族写真" },
+    { text: "コスモスと言ったらえりさん！ということで1番最初はお伺いしましたが…それからはえりさんの虜になり桜でもお邪魔するようになり…季節関係なくお伺いしたいくらい素敵な写真を撮って頂きいつも嬉しく思っています！", who: "m様 ／ 季節の撮影会" },
+    { text: "子供の節目の年に、記念に残る素敵な写真を残してもらえて嬉しかったです。普段は母の撮影の時には、集中してくれずふざけてばかりの2人で心配していましたが…子どもたちの心も鷲掴み！たくさん笑って、とても楽しい時間を過ごせました。私も、子供たちもえりちゃんが大好き！", who: "yu様 ／ 家族写真" },
+    { text: "コスモスと桜で2回撮影して頂きました！えりさんの撮影会は時間がゆったり流れている感じがとても好きです。子どもたちが遠くへ走って行ってしまっても一緒に遊びながら追いかけてくださり、子どもたちも楽しみながら撮影できました。", who: "うとろ様 ／ 季節の撮影会" },
+    { text: "家族で撮りたかったコスモスの絶景を素敵にきり撮ってくれました。姉妹もえりさんに遊びつつも素敵な自然な姿でポージングなどはさすが！女の子にばっちりヒットして可愛い写真が量産でした。", who: "あすか様 ／ 季節の撮影会" }
+  ],
+  faqCategories: [
+    {
+      key: "booking",
+      title: "ご予約について",
+      items: [
+        { question: "撮影は屋外のみですか？", answer: "屋外での自然光撮影が中心ですが、お家フォトプランなど室内での撮影にも対応しています。" },
+        { question: "天候が悪い場合はどうなりますか？", answer: "雨天の場合は日程の振替、または屋根のある場所への変更でご案内しています。" },
+        { question: "キャンセルや日程変更はできますか？", answer: "日程の変更は、料金不要でいつでも承ります。キャンセルは撮影日の5日前までのご連絡で無料です。それ以降はキャンセル料がかかります。" }
+      ]
+    },
+    {
+      key: "shooting",
+      title: "撮影・お支払いについて",
+      items: [
+        { question: "兄弟姉妹がいる場合、追加料金はかかりますか？", answer: "ご兄弟・ご姉妹の追加料金はいただいておりません。人数に関わらず同一料金です。" },
+        { question: "データはどのように納品されますか？", answer: "レタッチ後、オンライン上のギャラリーよりダウンロードいただく形でお届けします。" },
+        { question: "支払い方法を教えてください", answer: "銀行振込、または当日現金にて承っております。詳しくはお問い合わせください。" }
+      ]
+    }
+  ],
+  termsSections: [
+    {
+      title: "お客様へのお願い",
+      body: "神社や施設への撮影許可申請は、お客様ご自身でお願いしております（お早めにご確認ください）。\n\n入園料がかかる場所の場合は、カメラマンの分もご負担をお願いいたします。\n\nお客様の遅刻による撮影時間の延長や内容の保証は行っておりません。必ず時間に余裕をもってお越しください。",
+      rows: []
+    },
+    {
+      title: "お客様へのお願い２",
+      body: "撮影中の怪我や事故等について、一切の責任を負いかねます。また貴重品のお預かりはいたしかねますので、お子様の安全管理と貴重品の管理をお願いいたします。\n\n「写真」という商品の特性上、撮影後の返金対応はできかねます。ご希望のショットなど細かいご要望は、事前のヒアリングでお伝えください。",
+      rows: []
+    },
+    {
+      title: "お支払い・キャンセル料について",
+      body: "お支払いは当日現金、または事前振込にてお願いしております。\n\n日程の変更は、料金不要です。\n\n雨天中止の場合も、キャンセル料はかかりません。無断キャンセルの場合は撮影金額の全額をいただく場合がございます。",
+      rows: [
+        { label: "4日前〜2日前", value: "¥2,000" },
+        { label: "前日", value: "¥3,000" },
+        { label: "当日", value: "¥5,000" }
+      ]
+    },
+    {
+      title: "撮影・データ納品について",
+      body: "撮影時の小物の貸し出しは無料です。特別な衣装や装飾に関しては、別途有料オプションとなりますのでご希望の方は事前にご連絡ください。\n\nデータはオンラインアルバムにてお渡しします。納期は2週間〜1ヶ月前後をいただいております。\n\nオンラインアルバムでの閲覧期間は2ヶ月程度、元データの保管期間は6ヶ月とさせていただきます。納品後はご自身での保存・管理をお願いします。",
+      rows: []
+    },
+    {
+      title: "交通費・出張費について",
+      body: "自宅より片道40分以上の撮影場所は、交通費に加えて出張費をいただいております。1時間以上かかる場合は、事前にご相談ください。",
+      rows: [
+        { label: "片道40分", value: "+¥1,000" },
+        { label: "片道50分", value: "+¥1,500" },
+        { label: "片道60分", value: "+¥2,000" }
+      ]
+    }
+  ],
+  contact: {
+    heading: "まずは、お気軽にご相談ください",
+    body: "撮影のイメージが固まっていなくても大丈夫です。\n日程やご予算など、なんでもお聞かせください。",
+    line: "https://lin.ee/5NuUSkv",
+    instagram: "@__asuphoto"
+  },
+  footer: {
+    copyright: "© 2026 Eri Photography"
+  }
+};
+
+/* 保存されている内容を取得。無ければデフォルトを返す */
+async function loadContent() {
+  try {
+    if (!window.storage) throw new Error("storage unavailable");
+    const result = await window.storage.get(STORAGE_KEY, true);
+    if (result && result.value) {
+      const saved = JSON.parse(result.value);
+      // デフォルトとマージして、新しく追加された項目が欠けないようにする
+      return deepMerge(structuredClone(DEFAULT_CONTENT), saved);
+    }
+  } catch (e) {
+    console.log("保存データが見つからないため初期値を使用します", e);
+  }
+  return structuredClone(DEFAULT_CONTENT);
+}
+
+async function saveContent(content) {
+  if (!window.storage) {
+    throw new Error("この画面ではデータの保存機能が使えません（Claudeのアーティファクトとして開いた場合にのみ保存できます）");
+  }
+  return await window.storage.set(STORAGE_KEY, JSON.stringify(content), true);
+}
+
+function deepMerge(base, override) {
+  if (Array.isArray(base)) return Array.isArray(override) ? override : base;
+  if (typeof base === "object" && base !== null) {
+    const out = { ...base };
+    for (const k in override || {}) {
+      out[k] = deepMerge(base[k], override[k]);
+    }
+    return out;
+  }
+  return override !== undefined ? override : base;
+}

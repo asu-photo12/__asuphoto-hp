@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eri｜埼玉の出張カメラマン 七五三・お宮参り・お家フォト</title>
+<meta name="description" content="埼玉を拠点に、七五三・お宮参り・お家フォト・ロケーションフォトを出張撮影するフォトグラファーEri。鴻神社（鴻巣市）、大宮 武蔵一宮氷川神社（さいたま市）、瀧宮神社（深谷市）、高城神社（熊谷市）、鷲宮神社（久喜市）など、神社での家族写真撮影に対応します。">
+<meta name="keywords" content="埼玉,出張撮影,七五三,お宮参り,お家フォト,出張カメラマン,鴻神社,大宮 武蔵一宮氷川神社,瀧宮神社,高城神社,鷲宮神社,鴻巣市,さいたま市,深谷市,熊谷市,久喜市,家族写真">
+<meta property="og:title" content="Eri｜埼玉の出張カメラマン 七五三・お宮参り・お家フォト">
+<meta property="og:description" content="鴻神社（鴻巣市）、大宮 武蔵一宮氷川神社（さいたま市）、瀧宮神社（深谷市）、高城神社（熊谷市）、鷲宮神社（久喜市）など、埼玉の神社での七五三・お宮参り出張撮影。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  html{overflow-x:hidden; max-width:100%; overscroll-behavior-x:none; touch-action:pan-y pinch-zoom;}
+  body{overflow-x:clip; max-width:100%; position:relative;}
+  :root{
+    --paper:#ffffff;
+    --mist:#f2efe8;
+    --ink:#1c1c1a;
+    --teal:#2b6660;
+    --teal-deep:#1f4d48;
+    --stone:#8d897d;
+    --line:rgba(28,28,26,0.1);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    font-weight:400;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+    opacity:0; transition:opacity .3s ease;
+  }
+  body.ready{opacity:1;}
+  .en{font-family:'Jost', sans-serif;}
+  .mincho{font-family:'Shippori Mincho', serif;}
+  a{color:inherit; text-decoration:none;}
+  img{display:block; max-width:100%;}
+  .wrap{max-width:1240px; margin:0 auto; padding:0 42px;}
+  ::selection{background:var(--teal); color:#fff;}
+
+  header{
+    display:flex; align-items:stretch; justify-content:space-between;
+    border-bottom:1px solid var(--line); position:sticky; top:0; background:var(--paper); z-index:100;
+  }
+  .logo{display:flex; align-items:center; gap:12px; padding:18px 42px;}
+  .logo svg{width:34px; height:34px; flex-shrink:0;}
+  .logo .en{font-size:11px; letter-spacing:0.1em; color:var(--stone); display:block;}
+  .logo .name{font-size:21px; font-weight:600;}
+  nav{display:flex; align-items:center; gap:26px; padding:0 20px; margin-left:auto;}
+  nav a{font-size:14px; font-weight:600; text-align:center;}
+  nav a span{display:block; font-size:10.5px; font-weight:400; color:var(--stone); margin-top:2px; font-family:'Zen Kaku Gothic New',sans-serif;}
+  .menu-btn{display:none; background:none; border:none; font-size:24px; cursor:pointer; padding:0 14px; margin-right:auto;}
+  .contact-block{
+    background:var(--teal); color:#fff; display:flex; align-items:center; gap:10px;
+    padding:0 34px; font-weight:600; font-size:14px; white-space:nowrap;
+  }
+  .contact-block:hover{background:var(--teal-deep);}
+  .contact-block .arrow{width:26px; height:26px; border-radius:50%; background:rgba(255,255,255,0.18); display:flex; align-items:center; justify-content:center; font-size:14px;}
+
+  .hero-photo{position:relative; height:78vh; min-height:520px; overflow:hidden; background:var(--mist);}
+  .hero-photo img{width:100%; height:100%; object-fit:cover; filter:saturate(0.95) contrast(1.02);}
+  .hero-copy{padding:52px 0 70px; position:relative;}
+  .hero-copy .wrap{position:relative;}
+  .hero-copy h1{
+    font-family:'Zen Kaku Gothic New', sans-serif; font-weight:700; font-size:clamp(32px,5.4vw,68px);
+    line-height:1.3; letter-spacing:0.01em; margin-bottom:26px; white-space:pre-line;
+  }
+  .hero-copy p{font-size:17px; color:#3a3a36; font-weight:500; white-space:pre-line;}
+
+  section{padding:110px 0;}
+  .eyebrow{font-family:'Jost',sans-serif; font-weight:600; font-size:13px; letter-spacing:0.1em; color:var(--teal); margin-bottom:14px;}
+  .section-title{font-size:clamp(26px,3vw,36px); font-weight:700; margin-bottom:18px; white-space:pre-line;}
+  .section-lead{color:var(--stone); font-size:14.5px; max-width:520px; white-space:pre-line;}
+
+  .profile{position:relative; display:grid; grid-template-columns:1.12fr 0.88fr; align-items:center; gap:0;}
+  .profile::before{display:none;}
+  .profile-photo::before{content:""; position:absolute; left:62%; width:110%; top:32%; bottom:-34px; background:var(--mist); z-index:-1;}
+  .profile-photo{position:relative; z-index:1; width:100%; max-width:360px;}
+  .profile-photo img{display:block; width:100%; height:auto; aspect-ratio:474/602; object-fit:cover;}
+  .profile-text{position:relative; z-index:1; padding:30px 0 30px 64px; display:flex; flex-direction:column; justify-content:center;}
+  .profile-text .en-name{font-family:'Jost',sans-serif; font-weight:700; font-size:clamp(34px,4vw,52px); margin:4px 0 18px 2px;}
+  .profile-text p{font-size:14.5px; color:#4b473d; max-width:440px; margin-bottom:14px; white-space:pre-line;}
+  .pill-btn{
+    display:inline-flex; align-items:center; gap:10px; background:var(--teal); color:#fff; font-weight:600;
+    font-size:14px; padding:15px 30px; border-radius:100px; margin-top:20px; width:fit-content; border:none; cursor:pointer;
+    font-family:'Zen Kaku Gothic New',sans-serif;
+  }
+  .pill-btn:hover{background:var(--teal-deep);}
+  .pill-btn .arrow{width:22px; height:22px; border-radius:50%; background:rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; font-size:12px;}
+
+  .g-box{background:var(--mist); border-radius:6px; padding:30px; margin-top:30px;}
+  .gallery-tabs{display:flex; gap:10px; flex-wrap:wrap; margin:30px 0 22px;}
+  .tab-btn{
+    font-size:13px; font-weight:600; padding:10px 20px; border-radius:100px; border:1px solid var(--line);
+    background:#fff; cursor:pointer; color:var(--ink); font-family:'Zen Kaku Gothic New',sans-serif;
+  }
+  .tab-btn.active{background:var(--ink); border-color:var(--ink); color:#fff;}
+  .g-grid{display:grid; grid-template-columns:repeat(6,1fr); gap:4px;}
+  .g-grid.g-home{grid-template-columns:repeat(4,1fr); gap:6px;}
+  .gallery-more-wrap{margin-top:36px; text-align:center;}
+  .g-card{position:relative; overflow:hidden; aspect-ratio:4/5;}
+  .g-card img{width:100%; height:100%; object-fit:cover; transition:transform 1s cubic-bezier(.16,1,.3,1); filter:saturate(0.96);}
+  .g-card:hover img{transform:scale(1.05);}
+  .g-hide{display:none;}
+  .g-card{cursor:pointer;}
+
+  .lightbox{
+    position:fixed; inset:0; background:rgba(20,19,17,0.92); z-index:400;
+    display:flex; align-items:center; justify-content:center; padding:40px;
+    opacity:0; pointer-events:none; transition:opacity .25s ease;
+  }
+  .lightbox.open{opacity:1; pointer-events:auto;}
+  .lightbox img{max-width:100%; max-height:100%; object-fit:contain; border-radius:2px;}
+  .lightbox-close{
+    position:absolute; top:24px; right:28px; width:42px; height:42px; border-radius:50%;
+    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.3); color:#fff;
+    font-size:22px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  .lightbox-close:hover{background:rgba(255,255,255,0.22);}
+
+  /* ---------- plan category grid (komatsubara-sota.com 風) ---------- */
+  .cat-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:32px 40px; margin-top:20px;}
+  .cat-card{
+    display:block; padding:0; text-align:center; cursor:pointer; background:transparent;
+    transition:opacity .25s ease; text-decoration:none; color:inherit;
+  }
+  .cat-card{background:var(--mist); border-radius:6px; padding:34px 30px 38px; box-shadow:0 1px 0 rgba(28,28,26,0.04);}
+  .cat-card:hover{opacity:0.9;}
+  .cat-card h3{font-family:'Shippori Mincho',serif; font-weight:700; font-size:26px; letter-spacing:0.06em; margin-bottom:6px;}
+  .cat-card .cat-en{font-family:'Jost',sans-serif; font-weight:400; font-size:13px; letter-spacing:0.12em; color:var(--stone); margin-bottom:26px;}
+  .cat-card .cat-photo{width:100%; aspect-ratio:5/3.4; overflow:hidden; margin-bottom:26px;}
+  .cat-card .cat-photo img{width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(.16,1,.3,1);}
+  .cat-card:hover .cat-photo img{transform:scale(1.04);}
+  .more-view{
+    display:inline-flex; align-items:center; gap:8px; font-size:12.5px; letter-spacing:0.14em; color:var(--ink);
+    padding-bottom:5px; border-bottom:1px solid var(--ink); font-family:'Zen Kaku Gothic New',sans-serif;
+  }
+
+
+  .plans{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .plans.two-col{grid-template-columns:repeat(2,1fr);}
+  .plan{background:#fff; display:block; text-decoration:none; color:inherit; transition:opacity .2s ease; border-radius:4px;}
+  .plan:hover{opacity:0.82;}
+  .plan.featured{background:var(--mist);}
+  .plan.featured:hover{opacity:0.9;}
+  .plan-head{padding:8px 4px 24px;}
+  .plan.featured .plan-head{padding:28px 24px 24px;}
+  .plan-tag{
+    display:inline-block; font-size:12px; font-weight:700; color:var(--teal-deep); background:var(--mist);
+    padding:5px 14px; border-radius:100px; margin-bottom:16px; width:fit-content;
+  }
+  .plan.featured .plan-tag{background:#fff;}
+  .plan-title{font-size:18px; font-weight:700; margin-bottom:10px; display:flex; align-items:center; gap:8px; justify-content:space-between;}
+  .plan-title .badge{font-size:12px; font-weight:700; color:var(--teal); text-decoration:underline;}
+  .plan-title-text{display:flex; align-items:center; gap:8px;}
+  .plan-toggle{
+    width:26px; height:26px; border-radius:50%; border:1px solid var(--line); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; font-size:14px; color:var(--teal-deep);
+    background:#fff;
+  }
+  .plan.featured .plan-toggle{background:var(--teal); color:#fff; border-color:var(--teal);}
+  .plan-price{font-family:'Jost',sans-serif; font-size:28px; font-weight:700; color:var(--teal-deep);}
+  .plan-hint{font-size:12px; color:var(--stone); padding:0 30px 26px; margin-top:12px;}
+  .plan.featured .plan-hint{color:#5c7268;}
+
+  .voices{display:grid; grid-template-columns:1fr; gap:18px; margin-top:36px;}
+  .voice{background:var(--mist); border-radius:6px; padding:28px 34px 26px;}
+  .voice p{font-size:14px; color:#4b473d; margin-bottom:16px;}
+  .voice .who{font-family:'Jost',sans-serif; font-size:12.5px; font-weight:600; color:var(--stone);}
+  .voices-more-wrap{margin-top:36px; text-align:center;}
+
+  .area-chips{margin-top:30px; display:flex; flex-wrap:wrap; gap:10px;}
+  .area-chip{background:var(--mist); color:var(--teal-deep); border-radius:999px; padding:10px 20px; font-size:13.5px; font-weight:500; letter-spacing:.06em;}
+  .area-note{margin-top:22px; font-size:12.5px; color:var(--stone); line-height:2;}
+  .faq-list{margin-top:36px; display:flex; flex-direction:column; gap:24px;}
+  .faq-category-card{background:var(--mist); border-radius:6px; padding:32px 30px;}
+  .faq-category-title{
+    font-size:19px; font-weight:700; display:inline-block; padding-bottom:9px;
+    border-bottom:2px solid var(--ink); margin-bottom:6px;
+  }
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-item:last-child{border-bottom:none;}
+  .faq-q-row{
+    display:flex; align-items:center; gap:14px; padding:18px 2px; cursor:pointer; background:none; border:none;
+    width:100%; text-align:left; font-family:'Zen Kaku Gothic New',sans-serif;
+  }
+  .faq-mark{
+    font-family:'Jost',sans-serif; font-weight:700; font-size:15px; flex-shrink:0;
+    width:20px; color:var(--teal);
+  }
+  .faq-question{flex:1; font-size:13.5px; font-weight:700; color:var(--ink); line-height:1.7; overflow-wrap:break-word; word-break:keep-all;}
+  .faq-chevron{flex-shrink:0; font-size:11px; color:var(--stone); transition:transform .25s ease;}
+  .faq-item.open .faq-chevron{transform:rotate(180deg); color:var(--teal);}
+  .faq-answer-wrap{max-height:0; overflow:hidden; transition:max-height .35s cubic-bezier(.16,1,.3,1);}
+  .faq-answer{
+    padding:0 2px 20px 34px; font-size:12.5px; color:#4b473d; line-height:1.9;
+    white-space:pre-line; overflow-wrap:break-word; word-break:keep-all;
+  }
+
+  .contact-section{background:var(--teal); color:#fff;}
+  .contact-grid{display:block; text-align:center;}
+  .contact-grid h2{font-size:clamp(26px,3vw,36px); font-weight:700; margin-bottom:18px;}
+  .contact-grid p{opacity:0.86; font-size:14.5px; max-width:460px; margin:0 auto; white-space:pre-line;}
+  .contact-links{margin-top:32px; display:flex; flex-wrap:wrap; justify-content:center; gap:14px; font-size:14px; font-weight:600;}
+  .contact-btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; min-width:200px; padding:15px 28px; border-radius:100px; background:#fff; color:var(--teal-deep); font-weight:700; transition:opacity .2s ease;}
+  .contact-btn:hover{opacity:.88;}
+  .contact-btn svg{width:20px; height:20px; flex-shrink:0;}
+  .contact-link-icon{display:inline-flex; align-items:center; gap:9px;}
+  .contact-link-icon svg{width:18px; height:18px; flex-shrink:0;}
+  form{display:flex; flex-direction:column; gap:12px;}
+  form input, form textarea{
+    background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.3); border-radius:4px;
+    color:#fff; font-family:'Zen Kaku Gothic New',sans-serif; font-size:14px; padding:14px 16px;
+  }
+  form input::placeholder, form textarea::placeholder{color:rgba(255,255,255,0.65);}
+  form input:focus, form textarea:focus{outline:none; border-color:#fff;}
+  form textarea{resize:none; height:80px;}
+  form button{
+    margin-top:6px; background:#fff; color:var(--teal-deep); border:none; border-radius:100px;
+    padding:15px 30px; font-weight:700; font-size:14px; cursor:pointer; width:fit-content;
+  }
+  form button:hover{opacity:0.9;}
+
+  footer{padding:34px 0; text-align:center; font-size:12px; color:var(--stone);}
+
+  @media (max-width:940px){
+    header{position:sticky;}
+    nav{display:none; position:absolute; top:100%; left:0; right:0; flex-direction:column; align-items:stretch; gap:0; padding:6px 22px 14px; background:var(--paper); border-bottom:1px solid var(--line); margin-left:0; box-shadow:0 12px 24px rgba(0,0,0,.06);}
+    nav.open{display:flex;}
+    nav a{display:flex; justify-content:space-between; align-items:baseline; text-align:left; padding:15px 2px; border-bottom:1px solid var(--line); font-size:15px;}
+    nav a:last-child{border-bottom:none;}
+    nav a span{margin-top:0; font-size:12px;}
+    .menu-btn{display:block;}
+    .profile{display:block; padding-bottom:0;}
+    .profile::before{display:none;}
+    .profile-photo::before{left:calc(30% + 60px); width:84%; top:57%; bottom:auto; height:60%;}
+    .profile-photo{width:68%; margin:0 auto 0 0; z-index:2; position:relative;}
+    .profile-text{margin:-64px calc(50% - 50vw) 0 0; padding:84px calc(50vw - 50% + 22px) 10px 0; position:relative; z-index:3; display:block;}
+    .profile-text p{max-width:none;}
+    .plans{grid-template-columns:1fr 1fr;}
+    .g-grid{grid-template-columns:repeat(4,1fr);}
+    .g-grid.g-home{grid-template-columns:repeat(4,1fr);}
+    .voices{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    section{padding:70px 0;}
+    .wrap{padding:0 22px;}
+    .cat-grid{gap:26px 30px;}
+  }
+  @media (max-width:560px){
+    .plans{grid-template-columns:1fr;}
+    .g-grid{grid-template-columns:repeat(2,1fr);}
+    .g-grid.g-home{grid-template-columns:repeat(2,1fr);}
+    .cat-grid{grid-template-columns:1fr; gap:34px;}
+
+    html{font-size:15px;}
+    .wrap{padding:0 22px;}
+    section{padding:52px 0;}
+
+    /* header */
+    .logo{padding:14px 22px; gap:9px;}
+    .logo svg{width:28px; height:28px;}
+    .logo .en{font-size:9.5px;}
+    .logo .name{font-size:16px;}
+    .contact-block{padding:0 22px; font-size:12.5px;}
+    .contact-block .arrow{width:22px; height:22px; font-size:12px;}
+
+    /* hero */
+    .hero-photo{height:46vh; min-height:300px;}
+    .hero-copy{padding:32px 0 44px;}
+    .hero-copy h1{font-size:clamp(23px,7.4vw,32px); line-height:1.5; letter-spacing:0; margin-bottom:16px; overflow-wrap:break-word; word-break:keep-all;}
+    .hero-copy p{font-size:13.5px; line-height:1.75;}
+
+    /* section heads */
+    .eyebrow{font-size:11px; margin-bottom:10px;}
+    .section-title{font-size:clamp(19px,5.6vw,24px); line-height:1.45; margin-bottom:12px; overflow-wrap:break-word; word-break:keep-all;}
+    .section-lead{font-size:12.5px; line-height:1.8;}
+
+    /* profile */
+    .profile-text{padding:76px calc(50vw - 50% + 22px) 9px 0; margin-top:-52px;}
+    .profile-text .en-name{font-size:clamp(23px,7vw,30px); margin:2px 0 12px 2px;}
+    .profile-text p{font-size:12.5px; line-height:1.85; margin-bottom:10px;}
+    .pill-btn{font-size:12.5px; padding:12px 22px; margin-top:14px;}
+    .pill-btn .arrow{width:18px; height:18px; font-size:11px;}
+
+    /* plan category cards */
+    .cat-card{padding:26px 18px 30px;}
+    .cat-card h3{font-size:19px; line-height:1.4; overflow-wrap:break-word; word-break:keep-all;}
+    .cat-card .cat-en{font-size:10.5px; margin-bottom:16px;}
+    .more-view{font-size:11px;}
+
+    .plans{gap:20px;}
+    .plan-head{padding:4px 2px 16px;}
+    .plan.featured .plan-head{padding:20px 18px 16px;}
+    .plan-tag{font-size:10.5px; padding:4px 12px; margin-bottom:10px;}
+    .plan-title{font-size:15px; margin-bottom:8px;}
+    .plan-toggle{width:22px; height:22px; font-size:12px;}
+    .plan-price{font-size:21px;}
+    .plan-hint{font-size:10.5px; padding:0 20px 18px; margin-top:8px;}
+
+    /* gallery */
+    .gallery-tabs{gap:7px; margin:18px 0 20px;}
+    .tab-btn{font-size:11.5px; padding:8px 14px;}
+
+    /* voices */
+    .voices{gap:20px; margin-top:22px;}
+    .voice{padding:22px 20px 20px;}
+    .g-box{padding:14px; margin-top:22px;}
+    .voice p{font-size:12.5px; line-height:1.85; margin-bottom:12px;}
+    .voice .who{font-size:11px;}
+
+    /* contact */
+    .contact-grid{gap:30px;}
+    .contact-grid h2{font-size:clamp(19px,6vw,24px); line-height:1.5; margin-bottom:12px; overflow-wrap:break-word; word-break:keep-all;}
+    .contact-grid p{font-size:12.5px; line-height:1.85;}
+    .contact-links{margin-top:22px; gap:10px; font-size:12.5px; flex-direction:column; align-items:stretch;}
+    .contact-btn{min-width:0; padding:13px 20px;}
+    form{gap:9px;}
+    form input, form textarea{font-size:12.5px; padding:11px 13px;}
+    form button{font-size:12.5px; padding:12px 22px;}
+
+    footer{padding:24px 0; font-size:11px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="#top" class="logo">
+    <svg viewBox="0 0 40 40" fill="none"><rect x="4" y="12" width="32" height="22" rx="3" stroke="#1c1c1a" stroke-width="1.6"/><circle cx="20" cy="23" r="7" stroke="#1c1c1a" stroke-width="1.6"/><rect x="13" y="8" width="8" height="5" rx="1" stroke="#1c1c1a" stroke-width="1.6"/></svg>
+    <span>
+      <span class="en" id="logoLabel">Photographer</span>
+      <span class="name en" id="logoName">Eri</span>
+    </span>
+  </a>
+  <nav id="siteNav">
+    <a href="#profile">Profile<span>プロフィール</span></a>
+    <a href="#plans">Plan/Price<span>撮影プラン/料金</span></a>
+    <a href="#works">Gallery<span>ギャラリー</span></a>
+    <a href="#voices">Voice<span>お客様の声</span></a>
+    <a href="#faq">FAQ<span>よくある質問</span></a>
+    <a href="#terms">Terms<span>規約</span></a>
+  </nav>
+  <button class="menu-btn" id="menuBtn" aria-label="メニュー" aria-expanded="false" aria-controls="siteNav">☰</button>
+  <a href="#contact" class="contact-block">Contact<span class="arrow">→</span></a>
+</header>
+
+<div id="top">
+  <div class="hero-photo">
+    <img id="heroPhoto" src="" alt="ヒーロー写真">
+  </div>
+  <div class="hero-copy">
+    <div class="wrap">
+      <h1 id="heroHeadline"></h1>
+      <p id="heroSub"></p>
+    </div>
+  </div>
+</div>
+
+<section id="profile">
+  <div class="wrap">
+    <div class="profile">
+      <div class="profile-photo">
+        <img id="profilePhoto" src="" alt="プロフィール写真">
+      </div>
+      <div class="profile-text">
+        <div class="eyebrow" id="profileEyebrow">PROFILE</div>
+        <div class="en-name en" id="profileEnName"></div>
+        <p id="profileBody1"></p>
+        <p id="profileBody2"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="plans">
+  <div class="wrap">
+    <div class="eyebrow" id="planEyebrow">PLAN / PRICE</div>
+    <h2 class="section-title" id="planTitle">撮影プラン / 料金</h2>
+    <div class="cat-grid" id="planCatGrid"></div>
+  </div>
+</section>
+
+<section id="works">
+  <div class="wrap">
+    <div class="eyebrow" id="galleryEyebrow">GALLERY</div>
+    <h2 class="section-title" id="galleryTitle">ギャラリー</h2>
+    <p class="section-lead" id="galleryLead"></p>
+    <div class="g-box">
+      <div class="g-grid g-home" id="grid"></div>
+    </div>
+    <div class="gallery-more-wrap"><a href="./gallery.html" class="more-view en">View More &gt;&gt;</a></div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <button type="button" class="lightbox-close" id="lightboxClose" aria-label="閉じる">×</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<section id="voices">
+  <div class="wrap">
+    <div class="eyebrow" id="voicesEyebrow">VOICE</div>
+    <h2 class="section-title" id="voicesTitle">お客様の声</h2>
+    <div class="voices" id="voicesGrid"></div>
+    <div class="voices-more-wrap" id="voicesMoreWrap" style="display:none;">
+      <a href="./voices.html" class="more-view en">View More &gt;&gt;</a>
+    </div>
+  </div>
+</section>
+
+<section id="area">
+  <div class="wrap">
+    <div class="eyebrow">AREA</div>
+    <h2 class="section-title">撮影エリア・対応神社</h2>
+    <p class="section-lead">埼玉を中心に、七五三・お宮参り・お家フォト・ロケーションフォトの出張撮影をしています。神社での撮影は、下記の神社をはじめご希望の神社にお伺いします。</p>
+    <div class="area-chips">
+      <span class="area-chip">鴻神社（鴻巣市）</span>
+      <span class="area-chip">大宮 武蔵一宮氷川神社（さいたま市）</span>
+      <span class="area-chip">瀧宮神社（深谷市）</span>
+      <span class="area-chip">高城神社（熊谷市）</span>
+      <span class="area-chip">鷲宮神社（久喜市）</span>
+      <span class="area-chip">その他の神社・ご自宅・公園など</span>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="eyebrow" id="faqEyebrow">FAQ</div>
+    <h2 class="section-title" id="faqTitle">よくある質問</h2>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<section id="terms">
+  <div class="wrap">
+    <div class="eyebrow" id="termsEyebrow">TERMS</div>
+    <h2 class="section-title" id="termsTitle">ご利用規約</h2>
+    <p class="section-lead" id="termsLead"></p>
+    <a href="./terms.html" class="more-view en" id="termsLink" style="margin-top:26px;">詳しくはこちらをご覧ください</a>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="wrap contact-grid">
+    <div>
+      <h2 id="contactHeading"></h2>
+      <p id="contactBody"></p>
+      <div class="contact-links" id="contactLinks"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" id="footerText"></div>
+</footer>
+
+
+<script>
+/* フォールバック: このチャット内プレビューなど、外部の data.js を
+   読み込めない環境でも表示できるよう、同じ内容を埋め込んでいます。
+   公開サイトで外部の data.js が正常に読み込めた場合は、
+   そちらの内容で自動的に上書きされます。 */
+/* ============================================================
+   共有データモデル
+   このサイトと管理サイトは window.storage の同じキー
+   ("site-content", shared=true) を読み書きすることで同期します。
+   ここにあるオブジェクトは「まだ一度も保存されていないときの初期値」です。
+   ============================================================ */
+
+var STORAGE_KEY = "site-content";
+
+var DEFAULT_CONTENT = {
+  brand: {
+    nameEn: "Eri",
+    nameJa: "えり",
+    logoLabel: "Photographer"
+  },
+  hero: {
+    photo: "./images/hero-01.jpg",
+    headline: "特別な日だけじゃない、\nいつもの幸せを。",
+    sub: "何年経っても色褪せない思い出を形に。"
+  },
+  profile: {
+    photo: "./images/profile-eri.jpg",
+    nameEn: "Eri",
+    role: "フォトグラファー　えり",
+    body1: "埼玉在住の出張カメラマン。２児の母",
+    body2: "家族写真やナチュラルニューボンフォトをメインに撮影。\n小さなお子さんと関わるのが大好きです。"
+  },
+  sections: {
+    profile: { eyebrow: "PROFILE" },
+    plans: {
+      eyebrow: "PLAN / PRICE",
+      title: "撮影プラン / 料金",
+      lead: "ご用途に合わせてカテゴリー別にプランを\nご用意しています。気になるプランをクリックしてください。",
+      ctaLabel: "プランについて相談する"
+    },
+    gallery: {
+      eyebrow: "GALLERY",
+      title: "ギャラリー",
+      lead: "実際にご依頼いただいた撮影の一部です。"
+    },
+    voices: {
+      eyebrow: "VOICE",
+      title: "お客様の声"
+    },
+    faq: {
+      eyebrow: "FAQ",
+      title: "よくある質問"
+    },
+    terms: {
+      eyebrow: "TERMS",
+      title: "ご利用規約",
+      lead: "ご予約前に、撮影に関するお願いごとや\nキャンセル料・交通費についてご確認ください。",
+      linkLabel: "詳しくはこちらをご覧ください"
+    }
+  },
+  gallery: [
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-06.jpg", caption: "思わずこぼれる笑顔" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-03.jpg", caption: "お姉ちゃんと手をつないで" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/newborn-06.jpg", caption: "モーゼスバスケットでおやすみ" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/newborn-03.jpg", caption: "みんなの笑顔があふれるソファで" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/newborn-01.jpg", caption: "ミルクの時間もそのままに" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/newborn-05.jpg", caption: "家族みんなでソファのひととき" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-22.jpg", caption: "紫の傘で満面の笑み" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-13.jpg", caption: "お兄ちゃんたちの袴姿" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/ouchi-05.jpg", caption: "陽だまりの中で — 冬" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-12.jpg", caption: "パパの腕の中で" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-18.jpg", caption: "青い傘で鳥居の前に" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-30.jpg", caption: "パパに抱っこされて大笑い" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/ouchi-04.jpg", caption: "小さな手のひら — 春" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-10.jpg", caption: "てくてく歩く足元" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-25.jpg", caption: "歯の抜けた笑顔も宝物" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-24.jpg", caption: "鳥居の前で兄弟そろって" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-31.jpg", caption: "パパと顔を見合わせて" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-21.jpg", caption: "赤い傘と横顔" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-07.jpg", caption: "傘をさして神社の参道へ" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-04.jpg", caption: "わんこも一緒に家族写真" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-26.jpg", caption: "ふわっと宙に舞う笑顔" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-14.jpg", caption: "笛をふいてごきげん" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-17.jpg", caption: "赤い橋をそっと見つめて" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-20.jpg", caption: "草履の足元まで" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-32.jpg", caption: "ママとお姉ちゃんと一緒に" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-16.jpg", caption: "橋の上でにっこり" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-12.jpg", caption: "ちいさな手のぬくもり" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-11.jpg", caption: "ちょっぴり緊張の表情" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-23.jpg", caption: "手をつないで本殿の前へ" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-15.jpg", caption: "紫の傘で元気いっぱい" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-02.jpg", caption: "帯のうしろ姿まで" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-09.jpg", caption: "手をつないで、いざ参拝" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-08.jpg", caption: "ほっぺをむにゅっと" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-07.jpg", caption: "パパと見つめ合って" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/ouchi-06.jpg", caption: "ごきげんな寝顔 — 冬" },
+    { cat: "shichigosan", catLabel: "七五三", photo: "./images/shichigosan-19.jpg", caption: "鳥居の前でポーズ" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-22.jpg", caption: "花束とブーケハット — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-06.jpg", caption: "桜の下で親子のワンシーン — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-21.jpg", caption: "桜の下で撮影ごっこ — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-11.jpg", caption: "ランドセルをぎゅっと — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-14.jpg", caption: "桜の木の下で — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-04.jpg", caption: "花冠とブーケ — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-03.jpg", caption: "コスモス畑をおさんぽ — 秋" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-08.jpg", caption: "うさぎさんの笑顔 — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-24.jpg", caption: "桜と小川を見渡して — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-05.jpg", caption: "はじめの一歩 — 秋" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-16.jpg", caption: "桜の下で向かい合って — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-15.jpg", caption: "とびきりの笑顔 — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-13.jpg", caption: "赤ちゃんと一面のコスモス — 秋" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-10.jpg", caption: "桜と赤ちゃん — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-25.jpg", caption: "菜の花と桜のなかで" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-06.jpg", caption: "絵本タイムのひととき" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-02.jpg", caption: "お家のなにげない日常" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/newborn-02.jpg", caption: "ママの笑顔に包まれて" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-22.jpg", caption: "キッチンのママとおしゃべり" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-08.jpg", caption: "カードに夢中" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-10.jpg", caption: "お姉ちゃんと並んで" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-19.jpg", caption: "ごきげんな笑顔" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-04.jpg", caption: "リビングでごろん" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-02.jpg", caption: "おにいちゃんと並んでおやすみ" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-20.jpg", caption: "ごくごくタイム — モノクロ" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-26.jpg", caption: "思いっきりの笑顔" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/home-01.jpg", caption: "ソファで家族みんなで" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/home-11.jpg", caption: "弟をなでなで" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-30.jpg", caption: "ミニーのカチューシャでポーズ" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-18.jpg", caption: "小さな手" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-25.jpg", caption: "パパと腕相撲" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-17.jpg", caption: "パパのひざの上で" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-27.jpg", caption: "ケーキと一緒にバースデー" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-21.jpg", caption: "ごはんにっこり" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-16.jpg", caption: "指先でカードをえらぶ" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-09.jpg", caption: "兄弟のにぎやかな時間" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-11.jpg", caption: "窓辺でママと見つめ合って" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-18.jpg", caption: "ママに見守られてミルクタイム" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-13.jpg", caption: "ちいさな足" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-08.jpg", caption: "ママのひざの上で" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/ouchi-03.jpg", caption: "お兄ちゃんの抱っこデビュー — 冬" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-01.jpg", caption: "きょうだいみんなで赤ちゃんをのぞきこんで" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-14.jpg", caption: "くまさんと一緒にこんにちは" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/home-14.jpg", caption: "パパとおしゃべり" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/home-15.jpg", caption: "みんなでミルクタイム" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-05.jpg", caption: "パパの腕の中ですやすや" },
+    { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/newborn-04.jpg", caption: "パパとママの腕の中で" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-12.jpg", caption: "マタニティフォト" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-24.jpg", caption: "ぬいぐるみに囲まれて" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-31.jpg", caption: "きょうだいでミルクごっこ" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-23.jpg", caption: "ダイニングでごはんタイム" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-29.jpg", caption: "カードをじーっと見つめて" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-28.jpg", caption: "パパと赤ちゃんのおもちゃタイム" },
+    { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-13.jpg", caption: "こっちを見上げて" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-07.jpg", caption: "入学の記念に — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-01.jpg", caption: "コスモス畑で家族のひととき — 秋" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-17.jpg", caption: "桜とランドセル — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-09.jpg", caption: "コスモスの中で寄り添って — 秋" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-23.jpg", caption: "桜のトンネルで親子ショット — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-27.jpg", caption: "ひらり、桜の下で" },
+  ],
+  planOptions: [
+    { name: "土日祝日撮影", price: "+¥3,000", desc: "" },
+    { name: "レンタルお洋服", price: "別途相談", desc: "" },
+    { name: "ヘッドドレスつけ放題", price: "+¥1,500", desc: "" },
+    { name: "繁忙期シーズン加算", price: "+¥3,000", desc: "3月・4月の撮影に適用（平日・休日ともに適用）" },
+    { name: "出張費用", price: "別途相談", desc: "埼玉県北部の自宅からの距離に応じて（詳しくはお問合せください）" }
+  ],
+  planCategories: [
+    {
+      key: "family",
+      label: "家族写真",
+      labelEn: "Family",
+      lead: "季節のお花やお誕生日など\nご希望の場所で撮影が可能です。",
+      photo: "./images/family-sakura3.jpg",
+      intro: "ご家族の日常やイベントを、<b>自然な雰囲気のまま</b>残すプランです。",
+      notes: ["撮影は屋外・自然光の入る場所が中心です", "ご兄弟の追加料金はなし", "未就学のお子様も歓迎です"],
+      plans: [
+        { name: "Mini Plan", popular: false, price: "¥18,000", desc: "撮影を試してみたい方や短時間で撮りたい方", duration: "撮影時間 40分前後", delivery: "データ納品 15cut" },
+        { name: "Standard Plan", popular: true, price: "¥20,000", desc: "ご家族の大事なイベントや思い出をしっかり残したい方におすすめ", duration: "撮影時間 1時間前後", delivery: "データ納品 40cut" },
+        { name: "Premium Plan", popular: false, price: "¥26,000", desc: "少しの表情の変化も全て残したい方向け。様々なシーンをたくさんお届けします", duration: "撮影時間 1時間半前後", delivery: "データ納品 80cut" }
+      ]
+    },
+    {
+      key: "shichigosan",
+      label: "七五三",
+      labelEn: "Shichigosan",
+      photo: "./images/shichigosan-top2.jpg",
+      intro: "一生に一度の<b>ハレの日</b>を、自然な表情のまま残します。",
+      notes: ["着付け後のお時間に合わせて撮影します", "神社への同行も可能です", "ご兄弟姉妹の同時撮影も歓迎です"],
+      plans: [
+        { name: "Mini Plan", popular: false, price: "¥23,000", desc: "定番ショットのみを短時間で残したい方", duration: "撮影時間 40分前後", delivery: "データ納品 30cut" },
+        { name: "Standard Plan", popular: true, price: "¥26,000", desc: "ハレの日の記録をしっかり残したい方", duration: "撮影時間 1時間前後", delivery: "データ納品 70cut" },
+        { name: "Premium Plan", popular: false, price: "¥32,000", desc: "主役のお子様が複数いらっしゃる方、すべてのシーンを残したい方", duration: "撮影時間 1時間30分前後", delivery: "データ納品 100cut" }
+      ]
+    },
+    {
+      key: "omiyamairi",
+      label: "お宮参り",
+      labelEn: "Omiyamairi",
+      photo: "./images/miyamairi-01.jpg",
+      intro: "赤ちゃんとご家族にとって特別な一日を、<b>あたたかく</b>残します。",
+      notes: ["祖父母様とのご参加も歓迎です", "授乳・お世話のお時間は気にせずお伝えください", "神社での撮影許可はご自身でご確認ください"],
+      plans: [
+        { name: "Mini Plan", popular: false, price: "¥20,000", desc: "定番ショットのみを短時間で残したい方", duration: "撮影時間 40分前後", delivery: "データ納品 30cut" },
+        { name: "Standard Plan", popular: true, price: "¥22,000", desc: "ハレの日の記録をしっかり残したい方", duration: "撮影時間 1時間前後", delivery: "データ納品 50cut" },
+        { name: "Premium Plan", popular: false, price: "¥30,000", desc: "主役のお子様が複数いらっしゃる方、すべてのシーンを残したい方", duration: "撮影時間 1時間30分前後", delivery: "データ納品 100cut" }
+      ]
+    },
+    {
+      key: "uchiphoto",
+      label: "お家フォト",
+      labelEn: "Ouchi Photo",
+      photo: "./images/family-top.jpg",
+      intro: "<b>2歳まで</b>のお子様がいるご家庭で、お家で遊んだり、抱っこしたり、絵本を読んだり。そんな何気ない未来に残したい写真を撮るお手伝いをさせてください。",
+      notes: ["撮影場所はお家のみ・お家周辺となります", "ご兄弟の追加料金はなし", "ナチュラルニューボーン、マタニティも含みます", "2歳以上のお子さんのお家フォトは家族写真のPLAN価格になります"],
+      plans: [
+        { name: "Standard Plan", popular: false, price: "¥18,000", desc: "遊び、抱っこなど今残したい瞬間をしっかり", duration: "撮影時間 1時間前後", delivery: "データ納品 40cut" },
+        { name: "Premium Plan", popular: true, price: "¥23,000", desc: "たっぷり時間をかけてすべての瞬間を残したい方", duration: "撮影時間 1時間半前後", delivery: "データ納品 70cut" }
+      ]
+    }
+  ],
+  voices: [
+    { text: "春と秋に家族写真をお願いしています。撮っていただいた写真を見ると、やっぱり自分達だけでは残せない瞬間があるなと感じます。こどもの自然な表情、家族で笑い合っている空気感まで、自分達が撮る側だと見逃してしまう場面も丁寧に残してくださいます。私達にとっては「ただ写真を撮ってもらう人」ではなく、「会いたいから会いに行くフォトグラファーさん」です。", who: "E様 ／ 家族写真" },
+    { text: "今までお願いしてきたカメラマンさんの中で圧倒的いちばん！！撮影時のコミュニケーション、実際に見た景色や瞬間が蘇るような最高のキリトリ、丁寧すぎるセレクトに編集、どこをとっても100点満点のえりちゃん♡毎回子どもたちもとっても楽しそうでいきいきしていて、なにより母子ともにえりちゃんのことがだいすき！", who: "ai様 ／ 家族写真" },
+    { text: "とにかくeriさんがずっとニコニコ笑顔でケラケラ笑いながら撮影してくださるので自然と子供も笑顔で。ポージングの声掛けも指示を出すのではなく、子供との会話の延長にあって子供が嫌がったりすることはなく今までこんなに終始自然体に撮れたことがあったかと驚き。そして色が！光が！美しい！何度も見返したくなるし飾りたくなる宝物を撮っていただきお願いして良かったと毎度思います。", who: "em様 ／ 七五三" },
+    { text: "えりさんの撮影はとにかく楽しい！撮られている時間というより、なんか子どもたちとわちゃわちゃ楽しんでいたら、いつのまにか良い写真を撮っている！いつこんな写真撮っていたのー！？と、納品いただいた写真を見て驚きました。体当たりで子どもたちに接してくれて、子どもたちも笑っぱなしの遊びっぱなし！とても良い思い出ができました。", who: "nono様 ／ 季節の撮影会" },
+    { text: "自分で撮ると喧嘩してる２人を宥めながらシャッターを切るのが大変なので、えりさんがポケモンの話をしながら撮影してくれたおかげで姉弟ショットを撮れて嬉しかったです！納品してくださったふんわりとした色味も好みでまた撮影お願い出来たらと思っています。", who: "Y様 ／ 季節の撮影会" },
+    { text: "エリさん、思っていた以上に気さくで、明るくて楽しくて、撮影時間は笑顔溢れる時間で、沢山パワーもらえました。子供も楽しい時間を切り撮ってもらった感じで自然な表情なのに、親バカですがとびきり可愛く、美しく撮ってもらえて、データ来た時には泣けます！", who: "hana様 ／ 季節の撮影会" },
+    { text: "eriさんは本当に一人ひとりに全力で丁寧に向き合って撮影してくださいます。繊細で美しいお写真と、実際に会ったときの明るくエネルギッシュなギャップがすごく魅力的なカメラマンさまです！ママの『こうバチっと決めたい！』というお写真も、その子らしいありのままのお写真もどちらも残してくれるので、撮影してもらったお写真はどれを見ても大満足です。", who: "Yume様 ／ 季節の撮影会" },
+    { text: "遊びながら撮影してくれるし、撮影後も遊んでくれたりで我が家はえりちゃん大好き一家！パパでさえ、口を大きく開けて笑っちゃう。事前ヒアリングや、撮影後のフォローまで事細かく対応してくれるから、安心しかない。", who: "Aya様 ／ 季節の撮影会" },
+    { text: "コスモスを2年連続でお願いしました。どちらもとっても素敵に撮っていただき、私の宝物になっています。子どもたちの気分に合わせて優しく声をかけていただきながら、しっかりと可愛くなるようにアドバイスもくださり、可愛らしいものから楽しそうな笑顔のものまであり、撮ってもらう回数が増えて行くたびにいろいろな我が子も増えて幸せいっぱいです。色味もとても素敵で、えりさんの世界観、眼福です。", who: "S様 ／ 家族写真" },
+    { text: "コスモスと言ったらえりさん！ということで1番最初はお伺いしましたが…それからはえりさんの虜になり桜でもお邪魔するようになり…季節関係なくお伺いしたいくらい素敵な写真を撮って頂きいつも嬉しく思っています！", who: "m様 ／ 季節の撮影会" },
+    { text: "子供の節目の年に、記念に残る素敵な写真を残してもらえて嬉しかったです。普段は母の撮影の時には、集中してくれずふざけてばかりの2人で心配していましたが…子どもたちの心も鷲掴み！たくさん笑って、とても楽しい時間を過ごせました。私も、子供たちもえりちゃんが大好き！", who: "yu様 ／ 家族写真" },
+    { text: "コスモスと桜で2回撮影して頂きました！えりさんの撮影会は時間がゆったり流れている感じがとても好きです。子どもたちが遠くへ走って行ってしまっても一緒に遊びながら追いかけてくださり、子どもたちも楽しみながら撮影できました。", who: "うとろ様 ／ 季節の撮影会" },
+    { text: "家族で撮りたかったコスモスの絶景を素敵にきり撮ってくれました。姉妹もえりさんに遊びつつも素敵な自然な姿でポージングなどはさすが！女の子にばっちりヒットして可愛い写真が量産でした。", who: "あすか様 ／ 季節の撮影会" }
+  ],
+  faqCategories: [
+    {
+      key: "booking",
+      title: "ご予約について",
+      items: [
+        { question: "撮影は屋外のみですか？", answer: "屋外での自然光撮影が中心ですが、お家フォトプランなど室内での撮影にも対応しています。" },
+        { question: "天候が悪い場合はどうなりますか？", answer: "雨天の場合は日程の振替、または屋根のある場所への変更でご案内しています。" },
+        { question: "キャンセルや日程変更はできますか？", answer: "日程の変更は、料金不要でいつでも承ります。キャンセルは撮影日の5日前までのご連絡で無料です。それ以降はキャンセル料がかかります。" }
+      ]
+    },
+    {
+      key: "shooting",
+      title: "撮影・お支払いについて",
+      items: [
+        { question: "兄弟姉妹がいる場合、追加料金はかかりますか？", answer: "ご兄弟・ご姉妹の追加料金はいただいておりません。人数に関わらず同一料金です。" },
+        { question: "データはどのように納品されますか？", answer: "レタッチ後、オンライン上のギャラリーよりダウンロードいただく形でお届けします。" },
+        { question: "支払い方法を教えてください", answer: "銀行振込、または当日現金にて承っております。詳しくはお問い合わせください。" }
+      ]
+    }
+  ],
+  termsSections: [
+    {
+      title: "お客様へのお願い",
+      body: "神社や施設への撮影許可申請は、お客様ご自身でお願いしております（お早めにご確認ください）。\n\n入園料がかかる場所の場合は、カメラマンの分もご負担をお願いいたします。\n\nお客様の遅刻による撮影時間の延長や内容の保証は行っておりません。必ず時間に余裕をもってお越しください。",
+      rows: []
+    },
+    {
+      title: "お客様へのお願い２",
+      body: "撮影中の怪我や事故等について、一切の責任を負いかねます。また貴重品のお預かりはいたしかねますので、お子様の安全管理と貴重品の管理をお願いいたします。\n\n「写真」という商品の特性上、撮影後の返金対応はできかねます。ご希望のショットなど細かいご要望は、事前のヒアリングでお伝えください。",
+      rows: []
+    },
+    {
+      title: "お支払い・キャンセル料について",
+      body: "お支払いは当日現金、または事前振込にてお願いしております。\n\n日程の変更は、料金不要です。\n\n雨天中止の場合も、キャンセル料はかかりません。無断キャンセルの場合は撮影金額の全額をいただく場合がございます。",
+      rows: [
+        { label: "4日前〜2日前", value: "¥2,000" },
+        { label: "前日", value: "¥3,000" },
+        { label: "当日", value: "¥5,000" }
+      ]
+    },
+    {
+      title: "撮影・データ納品について",
+      body: "撮影時の小物の貸し出しは無料です。特別な衣装や装飾に関しては、別途有料オプションとなりますのでご希望の方は事前にご連絡ください。\n\nデータはオンラインアルバムにてお渡しします。納期は2週間〜1ヶ月前後をいただいております。\n\nオンラインアルバムでの閲覧期間は2ヶ月程度、元データの保管期間は6ヶ月とさせていただきます。納品後はご自身での保存・管理をお願いします。",
+      rows: []
+    },
+    {
+      title: "交通費・出張費について",
+      body: "自宅より片道40分以上の撮影場所は、交通費に加えて出張費をいただいております。1時間以上かかる場合は、事前にご相談ください。",
+      rows: [
+        { label: "片道40分", value: "+¥1,000" },
+        { label: "片道50分", value: "+¥1,500" },
+        { label: "片道60分", value: "+¥2,000" }
+      ]
+    }
+  ],
+  contact: {
+    heading: "まずは、お気軽にご相談ください",
+    body: "撮影のイメージが固まっていなくても大丈夫です。\n日程やご予算など、なんでもお聞かせください。",
+    line: "https://lin.ee/5NuUSkv",
+    instagram: "@__asuphoto"
+  },
+  footer: {
+    copyright: "© 2026 Eri Photography"
+  }
+};
+
+/* 保存されている内容を取得。無ければデフォルトを返す */
+async function loadContent() {
+  try {
+    if (!window.storage) throw new Error("storage unavailable");
+    const result = await window.storage.get(STORAGE_KEY, true);
+    if (result && result.value) {
+      const saved = JSON.parse(result.value);
+      // デフォルトとマージして、新しく追加された項目が欠けないようにする
+      return deepMerge(structuredClone(DEFAULT_CONTENT), saved);
+    }
+  } catch (e) {
+    console.log("保存データが見つからないため初期値を使用します", e);
+  }
+  return structuredClone(DEFAULT_CONTENT);
+}
+
+async function saveContent(content) {
+  if (!window.storage) {
+    throw new Error("この画面ではデータの保存機能が使えません（Claudeのアーティファクトとして開いた場合にのみ保存できます）");
+  }
+  return await window.storage.set(STORAGE_KEY, JSON.stringify(content), true);
+}
+
+function deepMerge(base, override) {
+  if (Array.isArray(base)) return Array.isArray(override) ? override : base;
+  if (typeof base === "object" && base !== null) {
+    const out = { ...base };
+    for (const k in override || {}) {
+      out[k] = deepMerge(base[k], override[k]);
+    }
+    return out;
+  }
+  return override !== undefined ? override : base;
+}
+
+</script>
+<script src="./data.js"></script>
+<script>
+async function render() {
+  try {
+    const c = await loadContent();
+    renderContent(c);
+  } catch (e) {
+    console.error("表示データの読み込みに失敗しました。初期値で表示します。", e);
+    try { renderContent(structuredClone(DEFAULT_CONTENT)); } catch(e2) { console.error(e2); }
+  } finally {
+    document.body.classList.add('ready');
+  }
+}
+
+function renderContent(c) {
+
+  // header
+  document.getElementById('logoLabel').textContent = c.brand.logoLabel;
+  document.getElementById('logoName').textContent = c.brand.nameEn;
+
+  // hero
+  document.getElementById('heroPhoto').src = c.hero.photo;
+  document.getElementById('heroHeadline').textContent = c.hero.headline;
+  document.getElementById('heroSub').textContent = c.hero.sub;
+
+  // profile
+  document.getElementById('profilePhoto').src = c.profile.photo;
+  document.getElementById('profileEnName').textContent = c.profile.nameEn;
+  document.getElementById('profileBody1').textContent = c.profile.body1;
+  document.getElementById('profileBody2').textContent = c.profile.body2; document.getElementById('profileBody2').style.display = c.profile.body2 ? '' : 'none';
+  document.getElementById('profileEyebrow').textContent = c.sections.profile.eyebrow;
+
+  // section headings (plans / gallery / voices)
+  document.getElementById('planEyebrow').textContent = c.sections.plans.eyebrow;
+  document.getElementById('planTitle').textContent = c.sections.plans.title;
+  document.getElementById('galleryEyebrow').textContent = c.sections.gallery.eyebrow;
+  document.getElementById('galleryTitle').textContent = c.sections.gallery.title;
+  document.getElementById('galleryLead').textContent = c.sections.gallery.lead;
+  document.getElementById('voicesEyebrow').textContent = c.sections.voices.eyebrow;
+  document.getElementById('voicesTitle').textContent = c.sections.voices.title;
+
+  // plans (カテゴリーグリッド → それぞれの専用ページへリンク)
+  const planCatGridEl = document.getElementById('planCatGrid');
+
+  function renderPlanCatGrid() {
+    planCatGridEl.innerHTML = c.planCategories.map(cat => `
+      <a class="cat-card" href="./category-detail.html?cat=${encodeURIComponent(cat.key)}">
+        <h3 class="mincho">${escapeHtml(cat.label)}</h3>
+        <div class="cat-en en">${escapeHtml(cat.labelEn || '')}</div>
+        <div class="cat-photo"><img src="${cat.photo}" alt="${escapeHtml(cat.label)}"></div>
+        <div class="more-view en">View More &gt;&gt;</div>
+      </a>`).join('');
+  }
+
+  renderPlanCatGrid();
+
+  // gallery（ホームには先頭8枚のみ。View More で一覧ページへ）
+  const gridEl = document.getElementById('grid');
+  gridEl.innerHTML = c.gallery.slice(0, 8).map((g, gi) => `
+    <div class="g-card" data-cat="${g.cat}" data-index="${gi}">
+      <img src="${g.photo}" alt="${escapeHtml(g.caption)}">
+    </div>`).join('');
+
+  // ライトボックス（写真クリックで拡大表示）
+  const lightboxEl = document.getElementById('lightbox');
+  const lightboxImgEl = document.getElementById('lightboxImg');
+  function openLightbox(index) {
+    const g = c.gallery[index];
+    if (!g) return;
+    lightboxImgEl.src = g.photo;
+    lightboxImgEl.alt = g.caption || '';
+    lightboxEl.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lightboxEl.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  gridEl.addEventListener('click', (e) => {
+    const card = e.target.closest('.g-card');
+    if (!card) return;
+    openLightbox(parseInt(card.dataset.index, 10));
+  });
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  lightboxEl.addEventListener('click', (e) => {
+    if (e.target === lightboxEl) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // voices（ホームには先頭3件のみ表示。4件以上あれば「View More」で全件ページへ）
+  const voicesToShow = c.voices.slice(0, 3);
+  document.getElementById('voicesGrid').innerHTML = voicesToShow.map(v => `
+    <div class="voice">
+      <p>${escapeHtml(v.text)}</p>
+      <div class="who en">${escapeHtml(v.who)}</div>
+    </div>`).join('');
+  document.getElementById('voicesMoreWrap').style.display = 'block';
+
+  // faq
+  document.getElementById('faqEyebrow').textContent = c.sections.faq.eyebrow;
+  document.getElementById('faqTitle').textContent = c.sections.faq.title;
+  const faqListEl = document.getElementById('faqList');
+  faqListEl.innerHTML = (c.faqCategories || []).map((cat, ci) => `
+    <div class="faq-category-card">
+      <div class="faq-category-title">${escapeHtml(cat.title)}</div>
+      ${cat.items.map((f, fi) => `
+        <div class="faq-item" data-cat="${ci}" data-item="${fi}">
+          <button type="button" class="faq-q-row">
+            <span class="faq-mark">Q</span>
+            <span class="faq-question">${escapeHtml(f.question)}</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer">${escapeHtml(f.answer)}</div>
+          </div>
+        </div>`).join('')}
+    </div>`).join('');
+
+  faqListEl.querySelectorAll('.faq-q-row').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const wrap = item.querySelector('.faq-answer-wrap');
+      const isOpen = item.classList.contains('open');
+      if (isOpen) {
+        item.classList.remove('open');
+        wrap.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        wrap.style.maxHeight = wrap.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // terms
+  document.getElementById('termsEyebrow').textContent = c.sections.terms.eyebrow;
+  document.getElementById('termsTitle').textContent = c.sections.terms.title;
+  document.getElementById('termsLead').textContent = c.sections.terms.lead;
+  document.getElementById('termsLink').textContent = c.sections.terms.linkLabel;
+
+  // contact
+  document.getElementById('contactHeading').textContent = c.contact.heading;
+  document.getElementById('contactBody').textContent = c.contact.body;
+  const instaHandle = (c.contact.instagram || '').replace(/^@/, '').trim();
+  const instaUrl = instaHandle ? `https://www.instagram.com/${encodeURIComponent(instaHandle)}/` : '';
+  const lineUrl = (c.contact.line || '').trim();
+  const lineIcon = '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.5C6.5 2.5 2 6.1 2 10.6c0 4 3.5 7.3 8.3 8 .3.1.8.2.9.5.1.3.1.7 0 1l-.2 1c0 .3-.2 1.1 1 .6s6.3-3.700 8.600-6.300c1.600-1.700 2.400-3.500 2.400-4.800C22 6.100 17.500 2.500 12 2.500z"/></svg>';
+  const instaIcon = '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor"/></svg>';
+  document.getElementById('contactLinks').innerHTML =
+    (lineUrl ? `<a href="${escapeHtml(lineUrl)}" class="contact-btn" target="_blank" rel="noopener noreferrer">${lineIcon}<span>公式LINE</span></a>` : '') +
+    (instaUrl ? `<a href="${instaUrl}" class="contact-btn" target="_blank" rel="noopener noreferrer">${instaIcon}<span>Instagram</span></a>` : '');
+
+  // footer
+  document.getElementById('footerText').textContent = c.footer.copyright;
+}
+
+function escapeHtml(str) {
+  if (str === undefined || str === null) return '';
+  return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+
+render();
+</script>
+
+<script>
+(function(){
+  var b=document.getElementById('menuBtn'), n=document.getElementById('siteNav');
+  if(!b||!n) return;
+  function set(o){ n.classList.toggle('open',o); b.setAttribute('aria-expanded',o); b.textContent=o?'✕':'☰'; }
+  b.addEventListener('click',function(){ set(!n.classList.contains('open')); });
+  n.addEventListener('click',function(e){ if(e.target.closest('a')) set(false); });
+})();
+</script>
+</body>
+</html>
