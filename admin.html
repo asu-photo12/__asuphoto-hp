@@ -171,7 +171,7 @@
     <div class="topbar">
       <div>
         <h1 id="pageTitle">サイト基本情報</h1>
-        <p>変更したら「保存する」を押してください。公開中のサイトに反映するには「data.jsを書き出す」からファイルをダウンロードし、公開先サーバーのdata.jsと差し替えてください。</p>
+        <p>変更したら「GitHubに公開する」を押すと、1〜2分でホームページに反映されます。写真はここからアップロードできます（ギャラリーは透かし文字が自動で入ります）。</p>
       </div>
       <div class="save-area">
         <span class="status-msg" id="statusMsg"></span>
@@ -529,17 +529,19 @@ var DEFAULT_CONTENT = {
     { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-06.jpg", caption: "桜の下で親子のワンシーン — 春" },
     { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-21.jpg", caption: "桜の下で撮影ごっこ — 春" },
     { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-11.jpg", caption: "ランドセルをぎゅっと — 春" },
-    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-14.jpg", caption: "桜の木の下で — 春" },
-    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-04.jpg", caption: "花冠とブーケ — 春" },
-    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-03.jpg", caption: "コスモス畑をおさんぽ — 秋" },
-    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-08.jpg", caption: "うさぎさんの笑顔 — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-31.jpg", caption: "お団子と桜、おそろいのセーラー" },
     { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-24.jpg", caption: "桜と小川を見渡して — 春" },
-    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-05.jpg", caption: "はじめの一歩 — 秋" },
-    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-16.jpg", caption: "桜の下で向かい合って — 春" },
-    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-15.jpg", caption: "とびきりの笑顔 — 春" },
-    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-13.jpg", caption: "赤ちゃんと一面のコスモス — 秋" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-28.jpg", caption: "うさぎ耳とお団子" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-03.jpg", caption: "コスモス畑をおさんぽ — 秋" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-14.jpg", caption: "桜の木の下で — 春" },
     { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-10.jpg", caption: "桜と赤ちゃん — 春" },
     { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-25.jpg", caption: "菜の花と桜のなかで" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-05.jpg", caption: "はじめの一歩 — 秋" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-36.jpg", caption: "満開の桜の中の七五三姿" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-13.jpg", caption: "赤ちゃんと一面のコスモス — 秋" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-17.jpg", caption: "桜とランドセル — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-34.jpg", caption: "ママに抱っこされて、にっこり" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-30.jpg", caption: "ひまわり畑を歩いて" },
     { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/natural-06.jpg", caption: "絵本タイムのひととき" },
     { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-02.jpg", caption: "お家のなにげない日常" },
     { cat: "natural", catLabel: "ナチュラルニューボーン", photo: "./images/newborn-02.jpg", caption: "ママの笑顔に包まれて" },
@@ -579,12 +581,16 @@ var DEFAULT_CONTENT = {
     { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-29.jpg", caption: "カードをじーっと見つめて" },
     { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-28.jpg", caption: "パパと赤ちゃんのおもちゃタイム" },
     { cat: "newborn", catLabel: "お家フォト", photo: "./images/home-13.jpg", caption: "こっちを見上げて" },
-    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-07.jpg", caption: "入学の記念に — 春" },
-    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-01.jpg", caption: "コスモス畑で家族のひととき — 秋" },
-    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-17.jpg", caption: "桜とランドセル — 春" },
-    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-09.jpg", caption: "コスモスの中で寄り添って — 秋" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-04.jpg", caption: "花冠とブーケ — 春" },
     { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-23.jpg", caption: "桜のトンネルで親子ショット — 春" },
     { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-27.jpg", caption: "ひらり、桜の下で" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-16.jpg", caption: "桜の下で向かい合って — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-15.jpg", caption: "とびきりの笑顔 — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-09.jpg", caption: "コスモスの中で寄り添って — 秋" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-29.jpg", caption: "桜のトンネルで" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-07.jpg", caption: "入学の記念に — 春" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-35.jpg", caption: "ランドセルと桜の道" },
+    { cat: "location", catLabel: "ロケーションフォト", photo: "./images/location-01.jpg", caption: "コスモス畑で家族のひととき — 秋" },
   ],
   planOptions: [
     { name: "土日祝日撮影", price: "+¥3,000", desc: "" },
@@ -765,11 +771,14 @@ function deepMerge(base, override) {
 
 </script>
 <script src="./data.js"></script>
+<script src="./admin-auth.js"></script>
+<script src="./admin-ext.js"></script>
 <script>
 let content = null;
 let activePlanCatKey = null;
 
 async function init() {
+  if (window.axBeforeInit) await axBeforeInit();
   content = await loadContent();
   fillBrandForm();
   fillHeroForm();
@@ -784,6 +793,7 @@ async function init() {
 
   document.getElementById('loadingScreen').style.display = 'none';
   document.getElementById('shell').style.display = 'grid';
+  if (window.axAfterInit) axAfterInit();
 }
 
 /* ---------- ナビゲーション ---------- */
@@ -883,16 +893,23 @@ function collectSectionHeadingsForm() {
 /* ---------- GALLERY (繰り返し) ---------- */
 function renderGalleryList() {
   const el = document.getElementById('gallery-list');
+  const pend = window.pendingUploads || {};
+  const psrc = window.previewSrc || (x => x);
   el.innerHTML = content.gallery.map((g, i) => `
     <div class="repeat-item">
       <div class="item-head">
-        <span class="item-num en">PHOTO ${i+1}</span>
-        <button class="btn btn-danger" onclick="removeGallery(${i})">削除</button>
+        <span class="item-num en">PHOTO ${i+1}${pend[g.photo] ? '<span class="ax-pending">未公開</span>' : ''}</span>
+        <span class="ax-move">
+          <button type="button" onclick="axMoveGallery(${i},-1)">↑</button>
+          <button type="button" onclick="axMoveGallery(${i},1)">↓</button>
+          <button class="btn btn-danger" onclick="removeGallery(${i})">削除</button>
+        </span>
       </div>
       <div class="field">
-        <label>写真URL</label>
-        <input type="url" value="${escAttr(g.photo)}" oninput="content.gallery[${i}].photo=this.value; document.getElementById('gallery-img-${i}').src=this.value;">
-        <img class="img-preview" id="gallery-img-${i}" src="${escAttr(g.photo)}">
+        <label>写真</label>
+        <div class="ax-upload"><input class="ax-file" type="file" accept="image/*" onchange="axReplaceGallery(${i},this)"><small>差し替え（透かし文字が自動で入ります）</small></div>
+        <input type="text" value="${escAttr(g.photo)}" oninput="content.gallery[${i}].photo=this.value; document.getElementById('gallery-img-${i}').src=(window.previewSrc?previewSrc(this.value):this.value);">
+        <img class="img-preview" id="gallery-img-${i}" src="${escAttr(psrc(g.photo))}">
       </div>
       <div class="grid-2">
         <div class="field">
@@ -905,6 +922,7 @@ function renderGalleryList() {
         </div>
       </div>
     </div>`).join('');
+  if (window.axRefreshCats) axRefreshCats();
 }
 function removeGallery(i) { content.gallery.splice(i,1); renderGalleryList(); }
 document.getElementById('gallery-add').addEventListener('click', () => {
@@ -993,8 +1011,9 @@ function renderPlanCatEditor() {
     </div>
     <div class="field">
       <label>カード用の代表写真URL</label>
-      <input type="url" value="${escAttr(cat.photo || '')}" oninput="content.planCategories[${catIndex}].photo=this.value; document.getElementById('plancat-img-${catIndex}').src=this.value;">
-      <img class="img-preview" id="plancat-img-${catIndex}" src="${escAttr(cat.photo || '')}">
+      <div class="ax-upload"><input class="ax-file" type="file" accept="image/*" onchange="axUploadInto(this,(p,u)=>{content.planCategories[${catIndex}].photo=p; renderPlanCatEditor(); })"><small>写真をアップロード（透かしなし）</small></div>
+      <input type="text" value="${escAttr(cat.photo || '')}" oninput="content.planCategories[${catIndex}].photo=this.value; document.getElementById('plancat-img-${catIndex}').src=(window.previewSrc?previewSrc(this.value):this.value);">
+      <img class="img-preview" id="plancat-img-${catIndex}" src="${escAttr((window.previewSrc?previewSrc(cat.photo||''):(cat.photo||'')))}">
     </div>
     <div class="field">
       <label>見出し下の一言説明（全カテゴリーのページに表示。空欄なら非表示。改行できます）</label>
@@ -1360,7 +1379,7 @@ document.getElementById('exportBtn').addEventListener('click', () => {
 document.getElementById('resetBtn').addEventListener('click', async () => {
   if (!confirm('すべての内容を初期状態に戻します。保存していない変更も失われます。よろしいですか？')) return;
   content = structuredClone(DEFAULT_CONTENT);
-  await saveContent(content);
+  try { await saveContent(content); } catch (e) { /* 公開サイトでは保存先が無いので無視 */ }
   fillBrandForm();
   fillHeroForm();
   fillProfileForm();
