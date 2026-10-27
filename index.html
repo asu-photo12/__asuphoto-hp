@@ -853,7 +853,7 @@ function renderContent(c) {
         <h3 class="mincho">${escapeHtml(cat.label)}</h3>
         <div class="cat-en en">${escapeHtml(cat.labelEn || '')}</div>
         <div class="cat-photo"><img src="${cat.photo}" alt="${escapeHtml(cat.label)}"></div>
-        <div class="more-view en">View More &gt;&gt;</div>
+        <div class="more-view">${escapeHtml(cat.label)}を見る &gt;&gt;</div>
       </a>`).join('');
   }
 
