@@ -81,6 +81,9 @@
   .plan-head{padding:28px 24px 26px; display:flex; flex-direction:column; flex:1;}
   .plan-desc{flex:1;}
   .plan-head .more-view{align-self:flex-start;}
+  .plans-sub{font-size:16px; font-weight:500; color:var(--teal); letter-spacing:.12em; margin:-6px 0 20px;}
+  .plans-sub .sub-dot, .disc-heading .sub-dot{display:inline-block; width:9px; height:9px; border-radius:50%; background:#d98fa0; box-shadow:0 0 0 4px rgba(217,143,160,.22); margin:0 .8em 0 0; vertical-align:middle; position:relative; top:-1px;}
+  .plan-note{font-size:12px; color:var(--stone); margin-top:14px; line-height:1.7;}
   .plan-tag{
     display:inline-block; font-size:12px; font-weight:700; color:var(--teal-deep); background:var(--mist);
     padding:5px 14px; border-radius:100px; margin-bottom:16px; width:fit-content;
@@ -95,6 +98,16 @@
   .plan-meta div{display:flex; align-items:baseline; gap:8px; font-size:12.5px;}
   .plan-meta .m-label{color:var(--stone); flex-shrink:0; min-width:64px;}
   .plan-meta .m-value{color:#3f3c34; font-weight:600;}
+
+  .disc-heading{margin-top:56px;}
+  .disc{ background:#fff; border:1px solid var(--line); border-radius:6px; padding:28px 24px 26px;}
+  .disc-photo{max-width:600px; margin-bottom:28px;}
+  .disc-photo img{width:100%; aspect-ratio:3/2; object-fit:cover; object-position:50% 48%; display:block;}
+  .disc-row{display:flex; border:1px solid var(--line);}
+  .disc-label{flex:0 0 38%; max-width:270px; background:#fafafa; padding:26px 28px; font-weight:700; letter-spacing:.08em; border-right:1px solid var(--line);}
+  .disc-value{padding:26px 28px; letter-spacing:.08em; font-size:17px;}
+  @media (max-width:600px){.disc-label{flex:0 0 auto; max-width:none; white-space:nowrap; font-size:12.5px; padding:24px 14px; letter-spacing:.04em;} .disc-value{padding:24px 16px; font-size:15px;}}
+  .disc-text{margin-top:20px; font-size:14px; color:#3f3c34; line-height:1.9; letter-spacing:.06em;}
 
   .cta-row{display:flex; gap:14px; flex-wrap:wrap; margin-top:44px;}
   .pill-btn{
@@ -308,21 +321,22 @@ var DEFAULT_CONTENT = {
     { name: "レンタルお洋服", price: "別途相談", desc: "" },
     { name: "ヘッドドレスつけ放題", price: "+¥1,500", desc: "" },
     { name: "繁忙期シーズン加算", price: "+¥3,000", desc: "3月・4月の撮影に適用（平日・休日ともに適用）" },
+    { name: "リピーター割引", price: "-¥1,000", desc: "一度でも個別撮影や撮影会に参加したことがある方" },
     { name: "出張費用", price: "別途相談", desc: "埼玉県北部の自宅からの距離に応じて（詳しくはお問合せください）" }
   ],
   planCategories: [
     {
       key: "family",
-      label: "家族写真",
-      labelEn: "Family",
-      lead: "季節のお花やお誕生日など\nご希望の場所で撮影が可能です。",
+      label: "ロケーションフォト",
+      labelEn: "Location",
+      lead: "桜やコスモスなど季節のお花でのロケーションフォトや\nご希望の場所での撮影が可能です。",
       photo: "./images/family-sakura3.jpg",
       intro: "ご家族の日常やイベントを、<b>自然な雰囲気のまま</b>残すプランです。",
       notes: ["撮影は屋外・自然光の入る場所が中心です", "ご兄弟の追加料金はなし", "未就学のお子様も歓迎です"],
       plans: [
-        { name: "Mini Plan", popular: false, price: "¥18,000", desc: "撮影を試してみたい方や短時間で撮りたい方", duration: "撮影時間 40分前後", delivery: "データ納品 15cut" },
-        { name: "Standard Plan", popular: true, price: "¥20,000", desc: "ご家族の大事なイベントや思い出をしっかり残したい方におすすめ", duration: "撮影時間 1時間前後", delivery: "データ納品 40cut" },
-        { name: "Premium Plan", popular: false, price: "¥26,000", desc: "少しの表情の変化も全て残したい方向け。様々なシーンをたくさんお届けします", duration: "撮影時間 1時間半前後", delivery: "データ納品 80cut" }
+        { name: "Mini Plan", popular: false, price: "¥20,000", desc: "撮影を試してみたい方や短時間で撮りたい方", duration: "撮影時間 40分前後", delivery: "データ納品 25cut" },
+        { name: "Standard Plan", popular: true, price: "¥22,000", desc: "ご家族の大事なイベントや思い出をしっかり残したい方におすすめ", duration: "撮影時間 1時間前後", delivery: "データ納品 50cut" },
+        { name: "Premium Plan", popular: false, price: "¥30,000", desc: "少しの表情の変化も全て残したい方向け。様々なシーンをたくさんお届けします", duration: "撮影時間 1時間半前後", delivery: "データ納品 80cut" }
       ]
     },
     {
@@ -520,11 +534,12 @@ async function render() {
       ` : ''}
 
       <div class="plans-heading">料金プラン</div>
+      ${cat.planSub ? `<div class="plans-sub"><span class="sub-dot"></span>${escapeHtml(cat.planSub)}</div>` : ''}
       <div class="plans ${cat.plans.length===2?'two-col':''}">
         ${cat.plans.map((p, pi) => `
           <div class="plan ${p.popular?'featured':''}">
             <div class="plan-head">
-              <div class="plan-tag">${escapeHtml(cat.label)}</div>
+              <div class="plan-tag">${escapeHtml(cat.planTag || cat.label)}</div>
               <div class="plan-title">
                 <span class="plan-title-text">${escapeHtml(p.name)}${p.popular?'<span class="badge">1番人気</span>':''}</span>
               </div>
@@ -534,9 +549,18 @@ async function render() {
                 <div><span class="m-label">撮影時間</span><span class="m-value">${escapeHtml(String(p.duration||'').replace(/^撮影時間\s*/,''))}</span></div>
                 <div><span class="m-label">データ納品</span><span class="m-value">${escapeHtml(String(p.delivery||'').replace(/^データ納品\s*/,''))}</span></div>
               </div>
+              ${cat.planNote ? `<div class="plan-note">${escapeHtml(cat.planNote)}</div>` : ''}
             </div>
           </div>`).join('')}
       </div>
+
+      ${cat.planDiscount ? `
+      <div class="plans-heading disc-heading"><span class="sub-dot"></span>${escapeHtml(cat.planDiscount.title)}</div>
+      <div class="disc">
+        ${cat.planDiscount.photo ? `<div class="disc-photo"><img src="${cat.planDiscount.photo}" alt="${escapeHtml(cat.planDiscount.title)}"></div>` : ''}
+        <div class="disc-row"><div class="disc-label">${escapeHtml(cat.planDiscount.label)}</div><div class="disc-value">${escapeHtml(cat.planDiscount.value)}</div></div>
+        <p class="disc-text">${escapeHtml(cat.planDiscount.text)}</p>
+      </div>` : ''}
 
       ${(c.planOptions && c.planOptions.length) ? `
       <div class="plans-heading option-heading">オプション料金</div>
