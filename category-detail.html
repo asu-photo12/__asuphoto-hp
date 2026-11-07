@@ -9,7 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   html{overflow-x:hidden; max-width:100%; overscroll-behavior-x:none; touch-action:pan-y pinch-zoom;}
-  body{overflow-x:clip; max-width:100%; position:relative;}
+  body{overflow-x:clip; max-width:100%; position:relative; word-break:keep-all; overflow-wrap:break-word;}
+  /* grid/flex子要素がテキストの最小幅で親幅を超えてはみ出すのを防ぐ */
+  *{min-width:0;}
   :root{
     --paper:#ffffff;
     --mist:#f2efe8;
@@ -73,7 +75,7 @@
   .cat-notes p{font-size:13px; color:var(--stone); margin-bottom:8px;}
   .plans{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
   .plans.two-col{grid-template-columns:repeat(2,1fr);}
-  .plan{background:#fff; border:1px solid var(--line); border-radius:6px; display:flex; flex-direction:column; color:inherit; text-decoration:none; transition:opacity .2s ease;}
+  .plan{background:#fff; border:1px solid var(--line); border-radius:6px; display:flex; flex-direction:column; color:inherit; text-decoration:none; transition:opacity .2s ease; min-width:0;}
   .plan:hover{opacity:.82;}
   a.plan, a.plan *{text-decoration:none;}
   .more-view{display:inline-flex; align-items:center; gap:8px; font-size:12.5px; letter-spacing:.14em; color:var(--ink); padding-bottom:5px; border-bottom:1px solid var(--ink);}
@@ -329,7 +331,7 @@ var DEFAULT_CONTENT = {
       key: "family",
       label: "ロケーションフォト",
       labelEn: "Location",
-      lead: "桜やコスモスなど季節のお花でのロケーションフォトや\nご希望の場所での撮影が可能です。",
+      lead: "桜やコスモスなど季節のお花での\nロケーションフォトや、ご希望の場所での撮影が可能です。",
       photo: "./images/family-sakura3.jpg",
       intro: "ご家族の日常やイベントを、<b>自然な雰囲気のまま</b>残すプランです。",
       notes: ["撮影は屋外・自然光の入る場所が中心です", "ご兄弟の追加料金はなし", "未就学のお子様も歓迎です"],
@@ -349,7 +351,7 @@ var DEFAULT_CONTENT = {
       plans: [
         { name: "Mini Plan", popular: false, price: "¥23,000", desc: "定番ショットのみを短時間で残したい方", duration: "撮影時間 40分前後", delivery: "データ納品 30cut" },
         { name: "Standard Plan", popular: true, price: "¥26,000", desc: "ハレの日の記録をしっかり残したい方", duration: "撮影時間 1時間前後", delivery: "データ納品 70cut" },
-        { name: "Premium Plan", popular: false, price: "¥32,000", desc: "主役のお子様が複数いらっしゃる方、すべてのシーンを残したい方\n※主役のお子様が3名以上いらっしゃる場合はこちらのPlanでお願いします", duration: "撮影時間 1時間30分前後", delivery: "データ納品 100cut" }
+        { name: "Premium Plan", popular: false, price: "¥32,000", desc: "主役のお子様が複数いらっしゃる方、すべてのシーンを残したい方\n※主役のお子様が3名以上いらっしゃる場合は、こちらのPlanでお願いします", duration: "撮影時間 1時間30分前後", delivery: "データ納品 100cut" }
       ]
     },
     {
